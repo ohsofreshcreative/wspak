@@ -61,6 +61,10 @@ class Reviews extends Block
 			->addText('name', [
 				'label' => 'Klient',
 			])
+			->addText('text', [
+				'label' => 'Wydawnictwo',
+			])
+			
 			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/

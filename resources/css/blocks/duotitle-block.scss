@@ -1,0 +1,26 @@
+.b-duotitle{
+	img{
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	
+		@media (max-width: 768px) {
+			max-height: 320px;
+			}
+	}
+	h2{
+		font-weight: 600;
+	}
+}
+
+
+
+.b-duotitle._offer {
+    ._box {
+        background: var(--color-secondary) !important; 
+        
+        > div.absolute {
+            background-image: none !important;
+        }
+    }
+}

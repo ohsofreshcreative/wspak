@@ -6,32 +6,33 @@ use Roots\Acorn\View\Composer;
 
 class App extends Composer
 {
-	/**
-	 * List of views served by this composer.
-	 *
-	 * @var array
-	 */
-	protected static $views = [
-		'*', // działa globalnie
-	];
+    /**
+     * List of views served by this composer.
+     *
+     * @var array
+     */
+    protected static $views = [
+        '*',
+    ];
 
-	/**
-	 * Dane dostępne we wszystkich widokach Blade.
-	 */
-	public function with(): array
-	{
-		return [
-			'siteName' => $this->siteName(),
-			'logo' => get_field('logo', 'option'),
-			'logo_footer' => get_field('logo_footer', 'option'),
-		];
-	}
+    /**
+     * Dane dostępne we wszystkich widokach Blade.
+     */
+    public function with(): array
+    {
+        return [
+            'siteName' => $this->siteName(),
+            'logo' => get_field('logo', 'option'),
+            'logo_footer' => get_field('logo_footer', 'option'),
+            'social_media' => get_field('social_media', 'option') ?: [],
+        ];
+    }
 
-	/**
-	 * Zwraca nazwę strony.
-	 */
-	public function siteName(): string
-	{
-		return get_bloginfo('name', 'display');
-	}
+    /**
+     * Zwraca nazwę strony.
+     */
+    public function siteName(): string
+    {
+        return get_bloginfo('name', 'display');
+    }
 }

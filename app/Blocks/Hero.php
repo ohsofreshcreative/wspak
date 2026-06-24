@@ -17,7 +17,7 @@ class Hero extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 	];
 
@@ -39,27 +39,37 @@ class Hero extends Block
 			/*--- TAB #1 ---*/
 			->addTab('Treść', ['placement' => 'top'])
 			->addGroup('g_hero', ['label' => 'Hero'])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array',
-				'preview_size' => 'thumbnail',
-			])
+			->addFile('video', [
+    'label' => 'Video MP4',
+    'return_format' => 'url',
+])
 			->addText('title', ['label' => 'Tytuł'])
+			->addText('title2', ['label' => 'Tytuł #2'])
+			->addRepeater('r_hero', [
+				'label' => 'Zmieniające napisy z tytułu',
+				'layout' => 'table', // 'row', 'block', albo 'table'
+				'min' => 1,
+				'button_label' => 'Dodaj kafelek'
+			])
+			->addText('title', [
+				'label' => 'Nagłówek',
+			])
+			->endRepeater()
+			->addText('title_sub', ['label' => 'Rózowy podtytuł'])
 			->addWysiwyg('text', [
 				'label' => 'Treść',
 				'tabs' => 'all', // 'visual', 'text', 'all'
 				'toolbar' => 'full', // 'basic', 'full'
 				'media_upload' => true,
 			])
-			->addLink('button1', [
-				'label' => 'Przycisk #1',
+			->addImage('image', [
+				'label' => 'Obraz',
 				'return_format' => 'array',
-			])
-			->addLink('button2', [
-				'label' => 'Przycisk #2',
-				'return_format' => 'array',
+				'preview_size' => 'thumbnail',
 			])
 			->endGroup()
+
+
 
 			/*--- USTAWIENIA BLOKU ---*/
 

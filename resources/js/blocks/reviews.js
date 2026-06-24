@@ -5,113 +5,120 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-/**
- * Logika dla przycisków "Zobacz całość" i obsługi popupa z recenzją.
- * @param {HTMLElement} scope - Element, w którym szukamy recenzji.
- */
-const initReviewPopup = (scope = document) => {
-  const reviewCards = scope.querySelectorAll('.swiper-slide .__card');
-  const popup = document.getElementById('review-popup');
-  const popupText = document.getElementById('review-popup-text');
-  const popupAuthor = document.getElementById('review-popup-author');
-  const closeButton = popup?.querySelector('.review-popup__close');
+const initSliderSwiper = (scope = document) => {
+	const swiperElements = scope.querySelectorAll(
+		'.reviews-swiper:not(.swiper-initialized), .slider-swiper:not(.swiper-initialized)'
+	);
 
-  if (!popup || !reviewCards.length) return;
+	if (!swiperElements.length) return;
 
-  reviewCards.forEach(card => {
-    const textElement = card.querySelector('.__txt');
-    const moreButton = card.querySelector('.btn-more');
-    const authorElement = card.querySelector('.font-header');
+	swiperElements.forEach((swiperEl) => {
+		const wrapper = swiperEl.querySelector('.swiper-wrapper');
+		if (!wrapper) return;
 
-    if (!textElement || !moreButton || !authorElement) return;
+		let originalCount = Number(swiperEl.dataset.originalSlideCount || 0);
+		if (!swiperEl.dataset.loopPrepared) {
+			const originalSlides = Array.from(wrapper.children);
+			originalCount = originalSlides.length;
 
-    // Pokaż przycisk "Zobacz całość", jeśli tekst jest obcięty
-    // Używamy setTimeout, aby dać czas na renderowanie
-    setTimeout(() => {
-      if (textElement.scrollHeight > textElement.clientHeight) {
-        moreButton.classList.remove('hidden');
-      }
-    }, 150);
+			if (!originalCount) return;
 
-    // Po kliknięciu "Zobacz całość"
-    moreButton.addEventListener('click', () => {
-      // Wypełnij popup danymi z klikniętej karty
-      popupText.innerHTML = textElement.innerHTML;
-      popupAuthor.textContent = authorElement.textContent;
-      // Pokaż popup
-      popup.classList.remove('hidden');
-      setTimeout(() => popup.classList.add('is-visible'), 10); // Opóźnienie dla animacji
-      document.body.style.overflow = 'hidden'; // Zablokuj scrollowanie tła
-    });
-  });
+			const prependFragment = document.createDocumentFragment();
+			const appendFragment = document.createDocumentFragment();
 
-  // Funkcja zamykająca popup
-  const closePopup = () => {
-    popup.classList.remove('is-visible');
-    document.body.style.overflow = ''; // Odblokuj scrollowanie
-    // Ukryj popup po zakończeniu animacji
-    setTimeout(() => popup.classList.add('hidden'), 300);
-  };
+			originalSlides.forEach((slide) => {
+				prependFragment.appendChild(slide.cloneNode(true));
+				appendFragment.appendChild(slide.cloneNode(true));
+			});
 
-  // Zamykanie popupa
-  closeButton?.addEventListener('click', closePopup);
-  // Zamykanie po kliknięciu w tło
-  popup.addEventListener('click', (e) => {
-    if (e.target === popup) {
-      closePopup();
-    }
-  });
-  // Zamykanie klawiszem Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && popup.classList.contains('is-visible')) {
-      closePopup();
-    }
-  });
+			wrapper.prepend(prependFragment);
+			wrapper.append(appendFragment);
+
+			swiperEl.dataset.loopPrepared = 'true';
+			swiperEl.dataset.originalSlideCount = String(originalCount);
+		}
+
+		originalCount = Number(swiperEl.dataset.originalSlideCount || 0);
+		if (!originalCount) return;
+
+		const section = swiperEl.closest('section') || scope;
+		const nextEl = section.querySelector('.__next');
+		const prevEl = section.querySelector('.__prev');
+		const paginationEl = swiperEl.querySelector('.swiper-pagination');
+
+		const realignSwiper = (swiperInstance) => {
+			swiperInstance.update();
+			swiperInstance.slideTo(originalCount, 0, false);
+			swiperInstance.updateSlidesClasses();
+		};
+
+		const normalizeLoopPosition = (swiperInstance) => {
+			if (swiperInstance.animating) return;
+
+			const currentIndex = swiperInstance.activeIndex;
+			const lastMiddleIndex = originalCount * 2 - 1;
+
+			if (currentIndex < originalCount) {
+				swiperInstance.slideTo(currentIndex + originalCount, 0, false);
+			} else if (currentIndex > lastMiddleIndex) {
+				swiperInstance.slideTo(currentIndex - originalCount, 0, false);
+			}
+		};
+
+		const swiper = new Swiper(swiperEl, {
+			modules: [Navigation, Pagination],
+
+			slidesPerView: 1,
+			spaceBetween: 0,
+			centeredSlides: true,
+			initialSlide: originalCount,
+			loop: false,
+			observer: true,
+			observeParents: true,
+			watchSlidesProgress: true,
+
+			breakpoints: {
+				768: {
+					slidesPerView: 'auto',
+					spaceBetween: 24,
+				},
+			},
+
+			pagination: {
+				el: paginationEl,
+				clickable: true,
+			},
+
+			navigation: {
+				nextEl,
+				prevEl,
+			},
+
+			on: {
+				init(swiperInstance) {
+					requestAnimationFrame(() => realignSwiper(swiperInstance));
+					setTimeout(() => realignSwiper(swiperInstance), 150);
+				},
+				transitionEnd(swiperInstance) {
+					normalizeLoopPosition(swiperInstance);
+				},
+				slideChange(swiperInstance) {
+					normalizeLoopPosition(swiperInstance);
+				},
+			},
+		});
+	});
 };
 
-/**
- * Inicjalizacja karuzeli Swiper.
- * @param {HTMLElement} scope - Element, w którym szukamy karuzeli.
- */
-const initReviewsSwiper = (scope = document) => {
-  const swiperElements = scope.querySelectorAll('.reviews-swiper:not(.swiper-initialized)');
-  if (!swiperElements.length) return;
+// ✅ odpalamy od razu (plik i tak będzie ładowany po warunku w app.js)
+initSliderSwiper();
 
-  swiperElements.forEach((swiperEl) => {
-    // ... (reszta kodu Swipera pozostaje bez zmian)
-    new Swiper(swiperEl, {
-      modules: [Navigation, Pagination],
-      slidesPerView: 1.2,
-      spaceBetween: 24,
-      loop: true,
-      pagination: { el: swiperEl.querySelector('.swiper-pagination'), clickable: true },
-      navigation: { nextEl: swiperEl.querySelector('.__next'), prevEl: swiperEl.querySelector('.__prev') },
-      breakpoints: {
-        768: { slidesPerView: 2.5, spaceBetween: 24 },
-        1024: { slidesPerView: 3.8, spaceBetween: 24 },
-      },
-      on: {
-        // Uruchom logikę popupa po załadowaniu i zmianie slajdu
-        init: () => initReviewPopup(swiperEl),
-        slideChange: () => initReviewPopup(swiperEl),
-      },
-    });
-  });
-};
-
-// Inicjalizacja na starcie
-initReviewsSwiper();
-initReviewPopup();
-
-// Wsparcie dla edytora ACF
+// ✅ ACF preview/editor
 if (window.acf) {
-  window.acf.addAction('render_block', (el) => {
-    const node = el?.[0] ?? el;
-    if (node) {
-      initReviewsSwiper(node);
-      initReviewPopup(node);
-    }
-  });
+	window.acf.addAction('render_block', (el) => {
+		const node = el?.[0] ?? el;
+		if (node) initSliderSwiper(node);
+	});
 }
 
-export default initReviewsSwiper;
+export default initSliderSwiper;

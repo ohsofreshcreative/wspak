@@ -8,44 +8,24 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	class="b-banner relative {{ $sectionClass }} {{ $section_class }}">
+	class="b-banner bg-background pt-0lg:pt-[90px]  lg:pb-[200px] pb-[100px] relative {{ $sectionClass }} {{ $section_class }}">
 
-	<div class=" __wrapper relative" style="background-image:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{{ $g_banner['image']['url'] }}'); background-size:cover; background-position:center;">
+<div class="absolute z-4 left_shape hidden xl:block"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
+<div class="absolute z-4 right_shape hidden xl:block"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
+
+	<div class=" __wrapper relative">
 		<div class="__inside c-main relative">
-			<div class="__content py-20">
-
-				<div>
-					<h1 data-gsap-element="header" class=" text-white">
+			<div class="__content py-20 grid grid-cols-1 md:grid-cols-2 c-main">
+					<h1 data-gsap-element="header" class=" text-white m-header">
 						{!! $g_banner['header'] !!}
 					</h1>
-					<div data-gsap-element="txt" class="text-lg text-white mt-2 w-full md:w-1/2">
+					<div data-gsap-element="txt" class="txt !text-2lg text-white w-full mt-auto">
 						{!! $g_banner['text'] !!}
 					</div>
-					@if (!empty($g_banner['button1']))
-					<div class="inline-buttons m-btn">
-						@if (!empty($g_banner['button1']))
-						<x-button
-							:href="$g_banner['button1']['url']"
-							variant="primary"
-							class=""
-							data-gsap-element="btn">
-							{{ $g_banner['button1']['title'] }}
-						</x-button>
-						@endif
-
-						@if (!empty($g_banner['button2']))
-						<x-button
-							:href="$g_banner['button2']['url']"
-							variant="secondary"
-							class=""
-							data-gsap-element="btn">
-							{{ $g_banner['button2']['title'] }}
-						</x-button>
-						@endif
-					</div>
-					@endif
-				</div>
+					
+				
 			</div>
 		</div>
+		
 
 </section>

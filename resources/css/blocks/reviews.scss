@@ -1,52 +1,46 @@
 .b-reviews {
-	.swiper {
-		.__img img {
-			width: 56px;
-			height: 56px;
-			max-width: 56px;
-			max-height: 56px;
-			border-radius: 100%;
-			object-fit: cover;
-		}
+	.blur {
+		border-radius: 915px;
+		mix-blend-mode: overlay;
+		filter: blur(125px);
+		width: 915px;
+		height: 915px;
+		position: absolute;
+		left: 142px;
+		top: -618px;
 	}
+
+	.second_blur {
+		border-radius: 1429px;
+		mix-blend-mode: overlay;
+		filter: blur(125px);
+		position: absolute;
+		right: 0;
+		bottom: -860px;
+		width: 1429px;
+		height: 1429px;
+	}
+
+	.right_shape {
+		width: 986px;
+		height: 966px;
+		transform: rotate(15deg);
+		right: -200px;
+		top: -640px;
+		mix-blend-mode: overlay;
+	}
+	@media(max-width: 992px) {
+		.right_shape {
+			right: -600px!important;
+	}
+	}
+
 
 	.__arrows {
 		width: max-content;
 		right: 0;
 		top: -80px;
+		z-index: 30;
 	}
 }
 
-.line-clamp-6 {
-	display: -webkit-box;
-	-webkit-line-clamp: 6;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-}
-
-// Usuwamy style dla .is-expanded, bo nie będą już potrzebne
-
-.hidden {
-	display: none;
-}
-
-.review-popup {
-
-	opacity: 0;
-	transition: opacity 0.3s ease-in-out;
-	pointer-events: none;
-
-	&.is-visible {
-		opacity: 1;
-		pointer-events: auto;
-	}
-
-	.review-popup__content {
-		transform: scale(0.95);
-		transition: transform 0.3s ease-in-out;
-	}
-
-	&.is-visible .review-popup__content {
-		transform: scale(1);
-	}
-}

@@ -1,4 +1,30 @@
 .b-content {
+	.left_shape {
+		width: 677px;
+		height: 663px;
+		transform: rotate(-15deg);
+		left: -65px;
+		top: -446px;
+		@media (max-width: 748px) {
+			top: -500px;
+			left: -350px;
+		}
+		@media (max-width: 500px) {
+			top: -500px;
+		}
+	}
+
+	.right_shape {
+		width: 667px;
+		height: 663px;
+		right: -480px;
+		bottom: -366px;
+		@media (max-width: 748px) {
+			bottom: -450px;
+			right: -520px;
+		}
+	}
+
 	.__txt {
 		p {
 			margin-bottom: 16px;
@@ -9,7 +35,7 @@
 		}
 
 		ul {
-			margin-top: 8px;
+			margin-top: 20px;
 			margin-bottom: 24px;
 			list-style: none;
 			padding-left: 0;
@@ -22,14 +48,14 @@
 				position: relative;
 				margin-bottom: 0.5em;
 				display: flex;
-				gap: 8px;
+				gap: 10px;
 				align-items: center;
 
 				&::before {
-					content: url('@images/pointer.svg');
+					content: url('@images/vector.svg');
 					position: relative;
 					left: 0;
-					top: -6px;
+					top: -2px;
 					width: 14px;
 					height: 14px;
 					background-size: contain;

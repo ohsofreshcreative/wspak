@@ -1,46 +1,27 @@
 import Swiper from 'swiper';
-import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const initSlider = () => {
   const sliders = document.querySelectorAll('.slider-standard');
-  if (!sliders.length) {
-    return;
-  }
+  if (!sliders.length) return;
 
   sliders.forEach((slider) => {
+    // Szukamy sekcji nadrzędnej, żeby przypisać unikalne strzałki
+    const parentSection = slider.closest('section');
+
     new Swiper(slider, {
-      modules: [Pagination],
+      modules: [Navigation],
       loop: true,
       grabCursor: true,
-      centeredSlides: false,
-      slidesPerView: 1,
-      spaceBetween: 24,
-      pagination: {
-        el: slider.querySelector('.swiper-pagination'),
-        clickable: true,
-      },
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-        },
-        580: {
-          slidesPerView: 2,
-        },
-        767: {
-          slidesPerView: 3,
-        },
-        992: {
-          slidesPerView: 3.5,
-        },
-        1200: {
-          slidesPerView: 4,
-        },
-        1400: {
-          slidesPerView: 4.5,
-        },
+      slidesPerView: 1,       // ZAWSZE jeden slajd na stronie
+      spaceBetween: 40,       // Odstęp między slajdami podczas przejścia
+      autoHeight: true,       // Dostosuje wysokość do zawartości
+      navigation: {
+        nextEl: parentSection.querySelector('.js-slider-next'),
+        prevEl: parentSection.querySelector('.js-slider-prev'),
       },
     });
   });

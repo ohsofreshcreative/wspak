@@ -17,7 +17,7 @@ class Content extends Block
 	public $mode = 'edit';
 public $supports = [
     'align' => false,
-    'mode' => false,
+    'mode' => true,
     'jsx' => true,
     'anchor' => true,
     'customClassName' => true,
@@ -112,6 +112,7 @@ public $supports = [
 					'section-brand' => 'Marki',
 					'section-gradient' => 'Gradient',
 					'section-dark' => 'Ciemne',
+					'bg-gradient-main' => 'Tło gradientowe'
 				],
 				'default_value' => 'none',
 				'ui' => 0, // Ulepszony interfejs

@@ -4,7 +4,6 @@ namespace App\Blocks;
 
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
-use App\Support\SectionClasses;
 
 class Logos extends Block
 {
@@ -17,7 +16,7 @@ class Logos extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => false,
+		'mode' => true,
 		'jsx' => true,
 		'anchor' => true,
 		'customClassName' => true,
@@ -31,7 +30,7 @@ class Logos extends Block
 			->setLocation('block', '==', 'acf/logos') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
-				'required' => 0,
+				
 			])
 			->addAccordion('accordion1', [
 				'label' => 'Logotypy partnerów',
@@ -41,7 +40,7 @@ class Logos extends Block
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_logos', ['label' => ''])
-			->addText('header', ['label' => 'Tytuł'])
+			->addText('title', ['label' => 'Tytuł'])
 			->addGallery('gallery', [
 				'label' => 'Logotypy',
 				'preview_size' => 'thumbnail',
@@ -102,29 +101,17 @@ class Logos extends Block
 		return $logos;
 	}
 
-	public function with(): array
+	public function with()
 	{
-		$fields = [
+		return [
 			'g_logos' => get_field('g_logos'),
-
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
-
-			'flip' => (bool) get_field('flip'),
-			'wide' => (bool) get_field('wide'),
-			'nomt' => (bool) get_field('nomt'),
-			'gap' => (bool) get_field('gap'),
-
-			'background' => get_field('background') ?: 'none',
+			'flip' => get_field('flip'),
+			'wide' => get_field('wide'),
+			'nomt' => get_field('nomt'),
+			'gap' => get_field('gap'),
+			'background' => get_field('background'),
 		];
-
-		$fields['sectionClass'] = SectionClasses::fromMap($fields, [
-			'flip' => 'order-flip',
-			'wide' => 'wide',
-			'nomt' => '!mt-0',
-			'gap' => 'wider-gap',
-		]);
-
-		return $fields;
 	}
 }

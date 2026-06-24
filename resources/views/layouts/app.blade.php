@@ -9,7 +9,8 @@
 	@php(wp_head())
 
 	{{-- Fonts --}}
-	<link rel="stylesheet" href="https://use.typekit.net/qgh2icj.css">
+<link rel="stylesheet" href="https://use.typekit.net/gow2xtp.css">
+
 
 	{{-- Styles --}}
 	@vite(['resources/css/app.css', 'resources/js/app.js'])

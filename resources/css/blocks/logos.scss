@@ -1,3 +1,32 @@
 .b-logos {
-	
+  .__logos {
+    overflow: hidden;
+
+    .__wrapper {
+      display: flex;
+      width: max-content !important;
+      align-items: center;
+      gap: 60px;
+      animation: logos-slider 60s linear infinite;
+      will-change: transform;
+
+	  @media (max-width: 640px) {
+		gap: 30px;
+	  }
+    }
+
+    .__slide {
+      width: auto !important;
+      flex-shrink: 0;
+    }
+
+    &:hover .__wrapper {
+      animation-play-state: paused;
+    }
+  }
+}
+
+@keyframes logos-slider {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }

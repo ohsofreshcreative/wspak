@@ -1,4 +1,25 @@
 .b-contact {
+	.blur {
+		border-radius: 615px;
+		mix-blend-mode: overlay;
+		filter: blur(125px);
+		width: 615px;
+		height: 615px;
+		right: -80px;
+		top: -86px;
+	}
+
+	.second_blur {
+		border-radius: 1389px;
+		mix-blend-mode: overlay;
+		filter: blur(125px);
+		position: absolute;
+		left: -677px;
+		bottom: -801px;
+		width: 1389px;
+		height: 1389px;
+	}
+
 	.__data {
 		font-size: 16px;
 	}
@@ -17,7 +38,7 @@
 
 	.__phone::before {
 		content: url("@images/phone.svg");
-		margin-right: 16px;
+		margin-right: 6px;
 		position: relative;
 		top: 4px;
 		max-width: 40px;
@@ -29,17 +50,11 @@
 
 	.__mail::before {
 		content: url('@images/mail.svg');
-		margin-right: 16px;
+		margin-right: 6px;
 		position: relative;
 		top: 4px;
 		max-width: 40px;
 	}
 
-	.__address::before {
-		content: url('/wp-content/uploads/2026/01/place.svg');
-		margin-right: 16px;
-		position: relative;
-		top: 4px;
-		max-width: 40px;
-	}
+
 }
