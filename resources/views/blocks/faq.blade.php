@@ -25,7 +25,7 @@
 					</div>
 					<x-icon.arrow-up class="__arrow text-secondary w-6 h-6" />
 				</label>
-				<div class="tabs-content">
+				<div class="tabs-content text-primary-900">
 					{!! $item['txt'] !!}
 				</div>
 			</div>
@@ -34,4 +34,4 @@
 
 	</div>
 
-</section>
+</section>B

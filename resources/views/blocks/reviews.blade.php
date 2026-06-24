@@ -31,7 +31,7 @@
 								<div class="relative z-10 flex flex-col ">
 									@if(!empty($card['txt']))
 									<div class="review-content-wrapper text-white">
-										<img class="mix-blend-overlay" src="{{ Vite::asset('resources/images/quote.svg') }}" />
+										<img class="mix-blend-overlay" src="{{ get_template_directory_uri() }}/resources/images/quote.svg" />
 										<div class="__txt text-h4 -mt-10 mb-9 font-normal!">{!! $card['txt'] !!}</div>
 									</div>
 									@endif
