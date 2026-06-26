@@ -53,7 +53,11 @@ class ThemeServiceProvider extends SageServiceProvider
             $headerFields
                 ->setLocation('options_page', '==', 'theme-settings')
                 ->addRepeater('social_media', [
+<<<<<<< Updated upstream
                     'label' => 'Social Media',
+=======
+                    'label' => 'Social Media (Nagłówek)',
+>>>>>>> Stashed changes
                     'layout' => 'table',
                     'button_label' => 'Dodaj ikonę',
                 ])

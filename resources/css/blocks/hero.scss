@@ -1,4 +1,5 @@
 .b-hero {
+<<<<<<< Updated upstream
 	.left_shape {
 		width: 1000px;
 		height: 1060px;
@@ -102,4 +103,58 @@
 	100% {
 		transform: translateY(-5.5em);
 	}
+=======
+	.left_shape{
+		left: -40%;
+
+	}
+	.right_shape{
+		right: -40%;
+
+	}
+    .hero-main-title {
+        font-size: 54px!important;
+        line-height: 1.1;
+        color: #ffffff;
+
+        @media (max-width: 768px) {
+            font-size: 2.25rem;
+        }
+
+        .text-carousel-container {
+            display: inline-flex;
+            vertical-align: baseline; 
+            height: 1.1em;
+            overflow: hidden;
+            margin: 0 0.20em;
+
+            .text-carousel-slider {
+                display: flex;
+                flex-direction: column;
+                animation: rotateHeroWords calc(3.5s * var(--steps)) cubic-bezier(0.76, 0, 0.24, 1) infinite;
+            }
+
+            .text-carousel-item {
+                height: 1.1em;
+                line-height: 1.1;
+                white-space: nowrap; 
+                display: block;
+                background: var(--gradient-lighter, linear-gradient(90deg, #00579B 5%, #E65796 93%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                padding-bottom: 4px;
+            }
+        }
+    }
+}
+
+@keyframes rotateHeroWords {
+    0%, 15%   { transform: translateY(0); }
+    20%, 35%  { transform: translateY(-1.1em); }
+    40%, 55%  { transform: translateY(-2.2em); }
+    60%, 75%  { transform: translateY(-3.3em); }
+    80%, 95%  { transform: translateY(-4.4em); }
+    100%      { transform: translateY(-5.5em); }
+>>>>>>> Stashed changes
 }

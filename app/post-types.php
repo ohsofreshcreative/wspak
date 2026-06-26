@@ -128,6 +128,7 @@ add_action('acf/init', function() {
         ]);
 
     acf_add_local_field_group($offer_side_fields->build());
+<<<<<<< Updated upstream
 });
 
 
@@ -216,3 +217,6 @@ add_action('acf/init', function() {
         'hierarchical' => true,
         'show_in_rest' => true,
     ]);
+=======
+});
+>>>>>>> Stashed changes

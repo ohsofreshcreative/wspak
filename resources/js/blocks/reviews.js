@@ -68,15 +68,24 @@ const initSliderSwiper = (scope = document) => {
 		const swiper = new Swiper(swiperEl, {
 			modules: [Navigation, Pagination],
 
+<<<<<<< Updated upstream
 			slidesPerView: 1,
 			spaceBetween: 0,
 			centeredSlides: true,
 			initialSlide: originalCount,
 			loop: false,
+=======
+			slidesPerView: 'auto',
+			spaceBetween: 24,
+			loop: false,
+			centeredSlides: true,
+			initialSlide: originalCount,
+>>>>>>> Stashed changes
 			observer: true,
 			observeParents: true,
 			watchSlidesProgress: true,
 
+<<<<<<< Updated upstream
 			breakpoints: {
 				768: {
 					slidesPerView: 'auto',
@@ -84,6 +93,8 @@ const initSliderSwiper = (scope = document) => {
 				},
 			},
 
+=======
+>>>>>>> Stashed changes
 			pagination: {
 				el: paginationEl,
 				clickable: true,
@@ -106,6 +117,18 @@ const initSliderSwiper = (scope = document) => {
 					normalizeLoopPosition(swiperInstance);
 				},
 			},
+<<<<<<< Updated upstream
+=======
+
+			breakpoints: {
+				768: {
+					spaceBetween: 24,
+				},
+				1024: {
+					spaceBetween: 24,
+				},
+			},
+>>>>>>> Stashed changes
 		});
 	});
 };
@@ -121,4 +144,8 @@ if (window.acf) {
 	});
 }
 
+<<<<<<< Updated upstream
 export default initSliderSwiper;
+=======
+export default initSliderSwiper;
+>>>>>>> Stashed changes

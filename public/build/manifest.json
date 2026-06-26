@@ -44,7 +44,11 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
+<<<<<<< Updated upstream
     "file": "assets/app-CeGk9z-7.css",
+=======
+    "file": "assets/app-DnswND6Q.css",
+>>>>>>> Stashed changes
     "name": "app",
     "names": [
       "app.css"
@@ -59,7 +63,11 @@
     ]
   },
   "resources/css/editor.css": {
+<<<<<<< Updated upstream
     "file": "assets/editor-4DxfpM3-.css",
+=======
+    "file": "assets/editor-CQsDC2Wl.css",
+>>>>>>> Stashed changes
     "name": "editor",
     "names": [
       "editor.css"
@@ -84,7 +92,11 @@
     "src": "resources/images/vector.svg"
   },
   "resources/js/app.js": {
+<<<<<<< Updated upstream
     "file": "assets/app-UO2Eijhw.js",
+=======
+    "file": "assets/app-CQJeOJvx.js",
+>>>>>>> Stashed changes
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -120,7 +132,11 @@
     ]
   },
   "resources/js/blocks/reviews.js": {
+<<<<<<< Updated upstream
     "file": "assets/reviews-DGw3kofE.js",
+=======
+    "file": "assets/reviews-CREVqNgU.js",
+>>>>>>> Stashed changes
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,

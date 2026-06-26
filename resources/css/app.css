@@ -80,6 +80,7 @@
 	/* #F881F0 */
 	--t-hover: 207 108 200;
 	/* #CF6CC8 */
+<<<<<<< Updated upstream
 
 	--t-50: 254 230 252;
 	/* #FEE6FC */
@@ -115,6 +116,40 @@
 
 	--custom-blue: 2 28 85;
 	/* #021C55 */
+=======
+
+	--t-50: 254 230 252;
+	/* #FEE6FC */
+	--t-100: 253 213 250;
+	/* #FDD5FA */
+	--t-200: 252 192 248;
+	/* #FCC0F8 */
+	--t-300: 250 171 245;
+	/* #FAABF5 */
+	--t-400: 249 150 243;
+	/* #F996F3 */
+	--t-500: 248 129 240;
+	/* #F881F0 */
+	--t-600: 207 108 200;
+	/* #CF6CC8 */
+	--t-700: 165 86 160;
+	/* #A556A0 */
+	--t-800: 124 65 120;
+	/* #7C4178 */
+	--t-900: 83 43 80;
+	/* #532B50 */
+	--t-dark: 50 26 48;
+	/* #321A30 */
+
+	/* neutrals / fixed backgrounds */
+	--gray: #2a3f50;
+	--bg: #F4F9FF;
+	--bg-light: #F7EEE5;
+	--bg-lighter: #E9F8F3;
+	--bg-brand: #002704;
+	--bg-dark: #071622;
+
+>>>>>>> Stashed changes
 }
 
 @theme {
@@ -177,9 +212,13 @@
 
 	--color-secondary-light: var(--color-secondary-300);
 	--color-secondary-lighter: var(--color-secondary-100);
+<<<<<<< Updated upstream
 	--color-custom-blue: rgb(var(--custom-blue));
 
 
+=======
+
+>>>>>>> Stashed changes
 	--color-muted: var(--color-secondary-500);
 	--gradient: linear-gradient(90deg, #132A23 0%, #0D3F2F 100%);
 	--gradient-light: linear-gradient(-90deg, #0E3A2D 0%, #0A533D 100%);
@@ -201,6 +240,7 @@
 @import '../css/blocks/hero.scss';
 @import '../css/blocks/category.scss';
 @import '../css/blocks/partners.scss';
+<<<<<<< Updated upstream
 @import '../css/blocks/duotitle-block.scss';
 @import '../css/blocks/offer.scss';
 @import '../css/blocks/contact-block.scss';
@@ -209,6 +249,14 @@
 @import '../css/blocks/overview.scss';
 @import '../css/blocks/team.scss';
 @import '../css/blocks/community.scss';
+=======
+@import '../css/blocks/duotitle.scss';
+
+/*-- NOT USED ---*/
+@import '../css/blocks/accordion.scss';
+@import '../css/blocks/cards.scss';
+@import '../css/blocks/category-posts.scss';
+>>>>>>> Stashed changes
 @import '../css/blocks/contact.scss';
 @import '../css/blocks/map.scss';
 @import '../css/blocks/header.scss';
@@ -231,4 +279,10 @@
 @import '../css/blocks/numbers.scss';
 @import '../css/blocks/overlap.scss';
 @import '../css/blocks/proces.scss';
+<<<<<<< Updated upstream
+=======
+@import '../css/blocks/reviews.scss';
+@import '../css/blocks/slider.scss';
+@import '../css/blocks/tabs.scss';
+>>>>>>> Stashed changes
 @import '../css/blocks/wysiwyg.scss';
