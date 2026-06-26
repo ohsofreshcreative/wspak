@@ -1459,11 +1459,6 @@
           "color": "#fff"
         },
         {
-          "name": "Body",
-          "slug": "body",
-          "color": "rgb(var(--body))"
-        },
-        {
           "name": "Primary",
           "slug": "primary",
           "color": "rgb(var(--primary))"
@@ -1497,11 +1492,6 @@
           "name": "Primary (500)",
           "slug": "primary-500",
           "color": "rgb(var(--p-500))"
-        },
-        {
-          "name": "Primary (700)",
-          "slug": "primary-700",
-          "color": "rgb(var(--p-700))"
         },
         {
           "name": "Primary (900)",
