@@ -520,7 +520,6 @@ h2,
 	font-size: 54px !important;
 	line-height: 3.7rem;
 	color: var(--color-primary-900) !important;
-
 }
 
 h3,
@@ -577,6 +576,19 @@ h6,
 
 .bg-light {
 	background: var(--bg-light) !important;
+}
+.bg-lighter {
+	background: var(--gradient-lighter) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+.bg-gradient-main{
+	background: var(--gradient-main) !important;
+}
+.bg-gradient-p{
+	background: var(--gradient-p) !important;
+
 }
 
 .bg-lighter {
@@ -804,7 +816,6 @@ header{
 }
 
 .fixed-top.scrollDown {
-
 	box-shadow: 0 3px 5px rgba(27, 106, 23, 0.2) !important;
 }
 

@@ -131,10 +131,6 @@ add_action('acf/init', function() {
 });
 
 
-
-
-
-
     // Rejestracja CPT - Lektorzy
     register_post_type('voices', [
         'labels' => [
