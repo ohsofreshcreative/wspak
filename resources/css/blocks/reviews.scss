@@ -1,5 +1,4 @@
 .b-reviews {
-<<<<<<< Updated upstream
 	.blur {
 		border-radius: 915px;
 		mix-blend-mode: overlay;
@@ -11,31 +10,6 @@
 		top: -618px;
 	}
 
-=======
-	.review-content-wrapper {
-		position: relative;
-	}
-
-	.review-quote-icon {
-		display: block;
-		width: 72px;
-		height: auto;
-		mix-blend-mode: overlay;
-		opacity: 0.72;
-	}
-
-	.blur {
-		border-radius: 915px;
-		mix-blend-mode: overlay;
-		filter: blur(125px);
-		width: 915px;
-		height: 915px;
-		position: absolute;
-		left: 142px;
-		top: -618px;
-	}
-
->>>>>>> Stashed changes
 	.second_blur {
 		border-radius: 1429px;
 		mix-blend-mode: overlay;
@@ -55,15 +29,11 @@
 		top: -640px;
 		mix-blend-mode: overlay;
 	}
-<<<<<<< Updated upstream
 	@media(max-width: 992px) {
 		.right_shape {
 			right: -600px!important;
 	}
 	}
-=======
-
->>>>>>> Stashed changes
 
 
 	.__arrows {

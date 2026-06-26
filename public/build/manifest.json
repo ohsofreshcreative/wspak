@@ -44,15 +44,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-<<<<<<< HEAD
-    "file": "assets/app-BLezdIWt.css",
-=======
-<<<<<<< Updated upstream
-    "file": "assets/app-CeGk9z-7.css",
-=======
-    "file": "assets/app-DnswND6Q.css",
->>>>>>> Stashed changes
->>>>>>> 46c2c88b9744c6b3d93f93f1c7ffabe743f5bfb7
+    "file": "assets/app-CtrZ3jPb.css",
     "name": "app",
     "names": [
       "app.css"
@@ -67,15 +59,7 @@
     ]
   },
   "resources/css/editor.css": {
-<<<<<<< HEAD
-    "file": "assets/editor-BCpeHX2p.css",
-=======
-<<<<<<< Updated upstream
-    "file": "assets/editor-4DxfpM3-.css",
-=======
-    "file": "assets/editor-CQsDC2Wl.css",
->>>>>>> Stashed changes
->>>>>>> 46c2c88b9744c6b3d93f93f1c7ffabe743f5bfb7
+    "file": "assets/editor-Bnu7V68L.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -100,11 +84,7 @@
     "src": "resources/images/vector.svg"
   },
   "resources/js/app.js": {
-<<<<<<< Updated upstream
     "file": "assets/app-UO2Eijhw.js",
-=======
-    "file": "assets/app-CQJeOJvx.js",
->>>>>>> Stashed changes
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -140,11 +120,7 @@
     ]
   },
   "resources/js/blocks/reviews.js": {
-<<<<<<< Updated upstream
     "file": "assets/reviews-DGw3kofE.js",
-=======
-    "file": "assets/reviews-CREVqNgU.js",
->>>>>>> Stashed changes
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
