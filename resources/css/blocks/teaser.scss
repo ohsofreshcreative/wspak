@@ -1,0 +1,17 @@
+.b-teaser {
+	.right_shape {
+		width: 1043px;
+		height: 1022px;
+		transform: rotate(-30deg);
+		right: -480px;
+		bottom: -685px;
+	}
+	._img{
+    background-image: url('<path-to-image>');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #091838;
+
+	}
+}

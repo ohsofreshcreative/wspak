@@ -85,15 +85,17 @@ html,
 body {
 	overflow-x: clip;
 	background-color: var(--bg);
-	color: var(--text-body);
+	color: rgb(var(--p-900));
 }
 
 /*--- !ROOT ---*/
 
 :root {
-	--header: "din-2014", sans-serif;
-	--txt: "din-2014", sans-serif;
-	--btns-font: "din-2014", sans-serif;
+	--header: "neue-haas-grotesk-display", sans-serif;
+	--txt: "neue-haas-grotesk-display", sans-serif;
+	--btns-font: "neue-haas-grotesk-display", sans-serif;
+
+
 
 	--smt: 104px;
 	--spt: 104px;
@@ -483,7 +485,7 @@ h5,
 h6,
 .text-h6,
 h7,
-.text-h7  {
+.text-h7 {
 	font-family: var(--header);
 	font-weight: 600;
 }
@@ -518,7 +520,7 @@ h2,
 	font-size: 54px !important;
 	line-height: 3.7rem;
 	color: var(--color-primary-900) !important;
-	font-weight: 400;
+
 }
 
 h3,
@@ -622,7 +624,7 @@ h6,
 .btn {
 	font-family: var(--btns-font);
 	font-size: var(--btns-fontsize);
-	font-weight: 400;
+	font-weight: 600;
 	color: #fff;
 	background: transparent;
 	border: 1px solid transparent;
@@ -771,7 +773,14 @@ h6,
 	transition: all 0.3s;
 	transition-delay: 0s;
 }
-
+header{
+._socials{
+	svg{
+		width: 24px;
+		height: 24px;
+	}
+}
+} 
 #menu-menu {
 	height: var(--menu-height);
 }
@@ -1055,16 +1064,50 @@ input[type='checkbox'] {
 		}
 	}
 }
+.hero-blog{
+	.left_shape {
+		width: 1000px;
+		left: -740px;
+		top: -180px;
+		@media(max-width: 768px){
+			width: 600px;
+			left: -440px;
+			top: -80px;
+		}
+	}
+
+	.right_shape {
+		width: 1000px;
+		right: -670px;
+		bottom: -450px;
+		mix-blend-mode: overlay;
+		@media(max-width: 768px){
+		width: 600px;
+		right: -470px;
+		bottom: -250px;
+		}
+	}
+	.blur{
+		width: 915px;
+height: 915px;
+left: 142px;
+bottom: -427px;
+border-radius: 915px;
+filter: blur(125px);
+	}
+}
+
 
 .blog-btn {
 	padding: 18px 16px;
 	transition: all 0.3s;
+		color: #4F606D;
 }
 
 .category-tabs {
 	.__tab {
 		transition: all 0.3s;
-		border: 1px solid var(--color-primary);
+		
 	}
 
 	.__tab:hover {
@@ -1074,7 +1117,7 @@ input[type='checkbox'] {
 
 	.active {
 		background-color: var(--color-primary-500);
-		color: #FFF;
+		
 	}
 }
 
@@ -1087,7 +1130,7 @@ input[type='checkbox'] {
 
 	.__card:hover {
 		.__content {
-			border-color: var(--p-800) !important;
+			border-color: var(--primary-900) !important;
 			transition: all 0.3s ease;
 		}
 	}
@@ -1120,13 +1163,39 @@ article.post:hover {
 .toc ul {
 	margin-left: 0;
 	padding-left: 0 !important;
+	
+}
+.toc ul {
+    margin-left: 0;
+    padding-left: 0 !important;
+    counter-reset: toc-counter;
 }
 
 .toc ul li {
-	border-left: 2px solid #ccc;
-	padding-left: 24px;
+    display: flex;
+    align-items: flex-start;
+    border-left: 1px solid #7FCBF8;
+    padding-left: 14px;
+    margin-bottom: 16px;
+    list-style: none;
+    counter-increment: toc-counter;
+}
+.toc ul li::before {
+    content: counter(toc-counter) ".";
+    flex-shrink: 0;
+    min-width: 24px;
+}
+
+.toc ul li {
+	border-left: 1px solid #8ABEE6;
+	padding-left: 16px;
 	margin-bottom: 16px;
 	list-style: none;
+	color: var(--color-primary);
+}
+.toc ul li a{
+	color:#4F606D!important;
+
 }
 
 .toc ul li.active {
@@ -1268,9 +1337,9 @@ article.post:hover {
 			display: none;
 		}
 
-		
 
-		
+
+
 	}
 
 	.footer_widget {
@@ -1280,32 +1349,33 @@ article.post:hover {
 	}
 }
 
-.secondary_box{
-svg{
-	fill: var(--color-secondary) !important;
+.secondary_box {
+	svg {
+		fill: var(--color-secondary) !important;
 
-}
+	}
 }
 
 @media (max-width: 767px) {
-  .footer-widget-container {
-    .widget-content-wrapper {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out, margin-top 0.3s ease-out;
-    }
+	.footer-widget-container {
+		.widget-content-wrapper {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.3s ease-out, margin-top 0.3s ease-out;
+		}
 
-    &.open {
-      .widget-content-wrapper {
-        margin-top: 12px;
-      }
+		&.open {
+			.widget-content-wrapper {
+				margin-top: 12px;
+			}
 
-      .widget-arrow {
-        transform: rotate(180deg);
-      }
-    }
-  }
+			.widget-arrow {
+				transform: rotate(180deg);
+			}
+		}
+	}
 }
+
 /*--- FOOTER MOBILE ---*/
 
 /* Ukryj menu na telefonach */
@@ -1456,6 +1526,9 @@ svg{
 @media only screen and (max-width: 640px) {
 	:root {
 		--smt: 56px;
+		--smb: 56px;
+		--spb: 56px;
+		--spt: 56px;
 		--img-m: 240px;
 		--img-l: 240px;
 		--img-2xl: 320px;

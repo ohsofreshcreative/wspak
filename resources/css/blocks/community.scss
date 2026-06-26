@@ -1,0 +1,33 @@
+.b-community {
+	.left_shape {
+		width: 1000px;
+		height: 1060px;
+		left: -700px;
+		top: -600px;
+	}
+
+	.right_shape {
+		width: 1000px;
+		height: 1060px;
+		right: -700px;
+		bottom: -800px;
+	}
+
+	._socials {
+		svg {
+			width: 40px !important;
+			height: 30px !important;
+		}
+	}
+
+	.blur {
+		width: 915px;
+		height: 915px;
+		border-radius: 915px;
+		background: #7E9CDD;
+		mix-blend-mode: overlay;
+		filter: blur(125px);
+		left: 142px;
+		bottom: -453px;
+	}
+}

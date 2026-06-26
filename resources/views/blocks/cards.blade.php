@@ -3,13 +3,13 @@
 <section
     data-gsap-anim="section"
     @if(!empty($section_id)) id="{{ $section_id }}" @endif
-    @class([ 'b-cards relative -smt overflow-hidden' ,
+    @class([ 'b-cards relative -spt overflow-hidden' ,
     $sectionClass=> filled($sectionClass),
     $section_class => filled($section_class),
     $background => filled($background) && $background !== 'none',
     ])>
 <div class="absolute z-10 left_shape hidden xl:block"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape_white.svg"></div>
-<div class="absolute z-10 right_shape hidden xl:block"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape_white.svg"></div>
+<div class="absolute z-0 lg:z-10 right_shape "><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape_white.svg"></div>
     <div class="__wrapper c-main">
         <div class="__top">
             <h2 data-gsap-element="header" class="m-header">{{ strip_tags($g_cards['header']) }}</h2>

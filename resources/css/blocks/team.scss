@@ -1,0 +1,34 @@
+.b-team {
+	.left_shape {
+		width: auto;
+		height: 1566px;
+		transform: rotate(15deg);
+		left: -809px;
+		top: -165px;
+@media (max-width: 748px) {
+			height: 800px;
+				left: -800px;
+		top: -165px;
+}
+	}
+
+	.right_shape {
+				width: auto;
+		height: 1100px;
+transform: rotate(15deg);
+		right: -550px;
+		bottom: -600px;
+
+		@media (max-width: 1500px) {
+			height: 1000px;
+			right: -650px;
+			bottom: -600px;
+}
+@media (max-width: 1200px) {
+			height: 800px;
+			right: -650px;
+			bottom: -600px;
+}
+	
+	}
+}

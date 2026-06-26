@@ -3,7 +3,7 @@
     data-gsap-anim="section"
     @if(!empty($section_id)) id="{{ $section_id }}" @endif
     @class([ 
-        'b-contact bg-primary-900 text-white -spt -spb relative -smt overflow-hidden',
+        'b-contact-block bg-primary-900 text-white -spt -spb relative -smt overflow-hidden',
         $sectionClass => filled($sectionClass),
         $section_class => filled($section_class),
         $background => filled($background) && $background !== 'none',
@@ -12,11 +12,11 @@
     <div class="blur bg-primary-100 absolute"></div>
     <div class="second_blur bg-primary-100 absolute"></div>
 
-    <div class="absolute right_shape z-1 block mix-blend-overlay w-[990px] h-[960px] top-[-180px] md:left-[-100px] left-[200px] rotate-[15deg]">
-        <img src="{{ get_template_directory_uri() }}/resources/images/shape.svg" alt="">
+    <div class="absolute right_shape z-10 block mix-blend-overlay w-[1300px] h-[1360px]  -top-10 md:-left-10 -left-6 rotate-[15deg]">
+        <img src="{{ get_template_directory_uri() }}/resources/images/shape_s.svg" alt="">
     </div>
 
-    <div class="__wrapper c-main relative z-2">
+    <div class="__wrapper c-main relative z-20">
         <div class="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-10 z-10">
             
             <div class="__content flex flex-col justify-between">

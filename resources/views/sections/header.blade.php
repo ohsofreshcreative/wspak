@@ -11,7 +11,7 @@ $social_media = get_field('social_media', 'option');
     <div class="items-center justify-between hidden h-full py-4 px-12 mx-auto lg:flex">
         <a class="brand shrink-0" href="{{ home_url('/') }}">
             @if ($logo)
-            <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-14">
+            <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-20">
             @else
             <span class="text-xl font-bold">{{ $siteName }}</span>
             @endif
@@ -42,7 +42,7 @@ $social_media = get_field('social_media', 'option');
     <div class="flex items-center justify-between p-4 mobile-menu fixed-top lg:hidden">
         <a class="brand shrink-0" href="{{ home_url('/') }}">
             @if ($logo)
-            <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12">
+            <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-18">
             @else
             <span class="text-lg font-bold">{{ $siteName }}</span>
             @endif
@@ -78,7 +78,7 @@ $social_media = get_field('social_media', 'option');
         aria-label="Menu mobilne">
         <div class="p-4 relative z-10">
             <div class="flex items-center justify-between mb-6">
-                <span class=""><a class="brand shrink-0" href="{{ home_url('/') }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-12"></a></span>
+                <span class=""><a class="brand shrink-0" href="{{ home_url('/') }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-18"></a></span>
                 <button
                     @click="mobileOpen = false"
                     class="p-2 text-white rounded-md">

@@ -1,4 +1,44 @@
 .b-tabs {
 
+	.__txt {
+		p {
+			margin-bottom: 16px;
+		}
+
+		p:last-child {
+			margin-bottom: 0 !important;
+		}
+
+		ul {
+			margin-top: 20px;
+			margin-bottom: 24px;
+			list-style: none;
+			padding-left: 0;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			li {
+				position: relative;
+				margin-bottom: 0.5em;
+				display: flex;
+				gap: 10px;
+				align-items: center;
+
+				&::before {
+					content: url('@images/vector.svg');
+					position: relative;
+					left: 0;
+					top: -2px;
+					width: 14px;
+					height: 14px;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+			}
+		}
+	}
 
 }

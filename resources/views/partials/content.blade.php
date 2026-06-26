@@ -1,21 +1,39 @@
-<article @php(post_class('__card'))>
+<article class="{{ implode(' ', get_post_class('__card')) }}">
 
-	<a class="rounded-2xl" href="{{ get_permalink() }}">
-		<div class="__content relative bg-white rounded-2xl p-6">
+	<a class="rounded-2xl h-full" href="{{ get_permalink() }}">
+		<div class="__content relative  rounded-2xl p-6 h-full">
 			@if (has_post_thumbnail())
 			<div class="block rounded-2xl overflow-hidden">
 				<img src="{{ get_the_post_thumbnail_url(null, 'large') }}" alt="{{ get_the_title() }}" class="w-full img-s object-cover">
 			</div>
 			@endif
-			<h6 class="mt-6">
+
+			<div class="mb-4 mt-4">
+				@php
+				$categories = get_the_category(get_the_ID());
+				$cat_name = '';
+				if (!empty($categories)) {
+				foreach ($categories as $category) {
+				if (mb_strtolower($category->name) === 'blog') {
+				continue;
+				}
+				$cat_name = $category->name;
+				break;
+				}
+				}
+				@endphp
+				@if(!empty($cat_name))
+				<span class="inline-block bg-[#DDEDFF] text-primary-900 text-xs font-medium px-2 py-1 rounded-[48px]">
+					{{ $cat_name }}
+				</span>
+				@endif
+			</div>
+
+			<h6 class="mt-6 text-primary-900">
 				{!! get_the_title() !!}
 			</h6>
-			<!--  <div class="mt-2">
-            @php(the_excerpt())
-        </div> -->
-			<p href="{{ get_permalink() }}" class="underline-btn mt-4">
-				Dowiedz się więcej
-			</p>
+
+
 		</div>
 	</a>
 </article>

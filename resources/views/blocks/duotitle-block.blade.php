@@ -35,7 +35,7 @@
 				<div data-gsap-element="txt" class="__txt mt-4">
 					{!! $g_duotitle['text'] !!}
 				</div>
-				<div class="inline-buttons m-btn">
+				<div class="inline-buttons m-btn ">
 					@if (!empty($g_duotitle['button1']))
 					<x-button
 						:href="$g_duotitle['button1']['url']"

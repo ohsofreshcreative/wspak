@@ -19,7 +19,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
             </h2>
             
             @if (!empty($posts_settings['button']))
-            <a data-gsap-element="btn" class="self-start inline-flex items-center gap-3 !text-primary-100 border-2 border-primary-100 rounded-full py-4 px-14 hover:bg-[#2563eb]/5 transition-all duration-300" href="{{ $posts_settings['button']['url'] }}">
+            <a data-gsap-element="btn" class="self-start inline-flex items-center gap-3 !text-primary-100 border-2 border-primary-100 rounded-full py-4 px-14 hover:bg-[#2563eb]/5 transition-all duration-300" href="{{ home_url('/category/blog/') }}">
                 <span class=" !font-medium ">{{ $posts_settings['button']['title'] }}</span>
           					<img class="strzałka" src="{{ get_template_directory_uri() }}/resources/images/__arrow.svg">
 
@@ -42,14 +42,27 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
                     </div>
 
                     <div class="mb-4">
-                        @php 
-                            $categories = get_the_category($post->ID);
-                            $cat_name = !empty($categories) ? $categories[0]->name : 'Blog';
-                        @endphp
-                        <span class="inline-block bg-[#DDEDFF] text-primary-900 text-xs font-medium px-2 py-1 rounded-[48px]">
-                            {{ $cat_name }}
-                        </span>
-                    </div>
+    @php 
+        $categories = get_the_category($post->ID);
+        $cat_name = '';
+
+        if (!empty($categories)) {
+            foreach ($categories as $category) {
+                if (mb_strtolower($category->name) === 'blog') {
+                    continue;
+                }
+                $cat_name = $category->name;
+                break;
+            }
+        }
+    @endphp
+
+    @if(!empty($cat_name))
+        <span class="inline-block bg-[#DDEDFF] text-primary-900 text-xs font-medium px-2 py-1 rounded-[48px]">
+            {{ $cat_name }}
+        </span>
+    @endif
+</div>
 
                     <h6 class=" text-primary-900 mb-6 ">
                         {{ get_the_title($post->ID) }}

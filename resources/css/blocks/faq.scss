@@ -18,7 +18,7 @@
 	}
 
 	.tabs-label {
-		padding: 16px 16px;
+		padding: 32px 32px;
 		margin-bottom: 0px !important;
 		cursor: pointer;
 		color: var(--body);
@@ -34,21 +34,15 @@
 		max-height: 0;
 		-webkit-transition: all 0.3s;
 		transition: all 0.3s;
-		padding: 0 24px;
+		padding: 0 32px;
 		overflow: hidden;
-
-		strong {
-			display: block;
-			padding-top: 24px;
-			padding-bottom: 8px;
-		}
 	}
 
 	.tabs-content p {
 		margin: 0;
 		margin-bottom: 16px;
 		font-size: 16px !important;
-		font-weight: 500!important;
+		font-weight: 500 !important;
 		display: inline-block;
 	}
 
@@ -75,6 +69,6 @@
 
 	input:checked~.tabs-content {
 		max-height: 1200px;
-		padding: 0 24px 24px 24px;
+		padding: 0 32px 32px 32px;
 	}
 }

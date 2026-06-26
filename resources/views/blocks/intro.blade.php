@@ -9,7 +9,7 @@
 	$background => filled($background) && $background !== 'none',
 	])>
 	<div class="__wrapper c-main relative ">
-		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center md:mb-12 mb-8">
+		<div class="__col grid grid-cols-1 xl:grid-cols-2 items-center md:mb-12 mb-8">
 
 			<div class="flex md:gap-14 gap-6">
 				@if (!empty($g_intro['icon']))

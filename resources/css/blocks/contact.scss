@@ -1,4 +1,4 @@
-.b-contact-block {
+.b-contact {
 	.blur {
 		border-radius: 615px;
 		mix-blend-mode: overlay;
@@ -56,5 +56,8 @@
 		max-width: 40px;
 	}
 
+	.__location {
+		border-bottom: 1px solid var(--text-s-secondary);
+	}
 
 }

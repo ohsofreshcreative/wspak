@@ -6,17 +6,18 @@ use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Support\SectionClasses;
 
-class ContactBlock extends Block
+class Map extends Block
 {
-    public $name = 'Kontakt - Blok globalny';
-    public $description = 'Wyświetla globalne dane kontaktowe z opcji strony.';
-    public $slug = 'contact-block';
+    public $name = 'Mapa';
+    public $description = 'map';
+    public $slug = 'map';
     public $category = 'formatting';
-    public $keywords = ['kontakt', 'contact'];
+    public $icon = 'location-alt'; 
+    public $keywords = ['mapa', 'tresc', 'map'];
     public $mode = 'edit';
     public $supports = [
         'align' => false,
-        'mode' => true,
+        'mode' => false,
         'jsx' => true,
         'anchor' => true,
         'customClassName' => true,
@@ -24,33 +25,41 @@ class ContactBlock extends Block
 
     public function fields()
     {
-        $contactBlock = new FieldsBuilder('contact-block');
+        $map = new FieldsBuilder('map');
 
-        $contactBlock
-            ->setLocation('block', '==', 'acf/contact-block')
+        $map
+            ->setLocation('block', '==', 'acf/map')
             ->addText('block-title', [
-                'label' => 'Tytuł lokalny (w edytorze)',
+                'label' => 'Tytuł bloku',
                 'required' => 0,
             ])
             ->addAccordion('accordion1', [
-                'label' => 'Informacje i ustawienia',
+                'label' => 'Treść mapy',
                 'open' => false,
                 'multi_expand' => true,
             ])
+            /*--- GROUP ---*/
+            ->addTab('Elementy', ['placement' => 'top'])
+            ->addGroup('g_map', ['label' => ''])
+            ->addText('header', ['label' => 'Nagłówek'])
+            ->addWysiwyg('txt', [
+                'label' => 'Treść',
+                'tabs' => 'all',
+                'toolbar' => 'full',
+                'media_upload' => true,
+            ])
+            ->endGroup()
 
-            /*--- KARTA 1: INFORMACJE ---*/
-            ->addTab('Informacja', ['placement' => 'top'])
-            ->addMessage(
-                'info',
-                'Treści kontaktu edytujesz globalnie w zakładce "Kontakt Globalny" w menu bocznym WP.'
-            )
-
-            /*--- KARTA 2: USTAWIENIA WIZUALNE BLOKU ---*/
+            /*--- USTAWIENIA BLOKU ---*/
             ->addTab('Ustawienia bloku', ['placement' => 'top'])
-            ->addText('section_id', ['label' => 'ID'])
-            ->addText('section_class', ['label' => 'Dodatkowe klasy CSS'])
-            ->addTrueFalse('flip', [
-                'label' => 'Odwrotna kolejność',
+            ->addText('section_id', [
+                'label' => 'ID',
+            ])
+            ->addText('section_class', [
+                'label' => 'Dodatkowe klasy CSS',
+            ])
+            ->addTrueFalse('nolist', [
+                'label' => 'Brak punktatorów',
                 'ui' => 1,
                 'ui_on_text' => 'Tak',
                 'ui_off_text' => 'Nie',
@@ -83,36 +92,35 @@ class ContactBlock extends Block
                     'section-brand' => 'Marki',
                     'section-gradient' => 'Gradient',
                     'section-dark' => 'Ciemne',
+                    'section-soft-blue' => 'Jasnoniebieskie (#F4F9FF)',
+                    'section-lighter-grad' => 'Gradient Pionowy (Lighter)',
+                    'section-light-horizontal' => 'Gradient Poziomy',
                 ],
                 'default_value' => 'none',
                 'allow_null' => 0,
             ]);
 
-        return $contactBlock->build();
+        return $map;
     }
 
     public function with(): array
     {
         $fields = [
-            // Pobieranie danych GLOBALNYCH z Options Page ('option')
-            'g_contact_1'   => get_field('g_contact_1', 'option') ?: [],
-            'g_contact_2'   => get_field('g_contact_2', 'option') ?: [],
-
-            // Ustawienia LOKALNE konkretnego bloku
-            'section_id'    => get_field('section_id'),
+            'g_map' => get_field('g_map'),
+            'section_id' => get_field('section_id'),
             'section_class' => get_field('section_class'),
-            'flip'          => (bool) get_field('flip'),
-            'wide'          => (bool) get_field('wide'),
-            'nomt'          => (bool) get_field('nomt'),
-            'gap'           => (bool) get_field('gap'),
-            'background'    => get_field('background') ?: 'none',
+
+            'wide' => (bool) get_field('wide'),
+            'nomt' => (bool) get_field('nomt'),
+            'gap' => (bool) get_field('gap'),
+
+            'background' => get_field('background') ?: 'none',
         ];
 
         $fields['sectionClass'] = SectionClasses::fromMap($fields, [
-            'flip' => 'order-flip',
             'wide' => 'wide',
             'nomt' => '!mt-0',
-            'gap'  => 'wider-gap',
+            'gap' => 'wider-gap',
         ]);
 
         return $fields;
