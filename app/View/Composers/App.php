@@ -20,10 +20,20 @@ class App extends Composer
      */
     public function with(): array
     {
+        $rawLogo = get_field('logo', 'option');
+        $logo = is_array($rawLogo)
+            ? $rawLogo
+            : ($rawLogo ? ['url' => $rawLogo, 'alt' => ''] : null);
+
+        $rawLogoFooter = get_field('logo_footer', 'option');
+        $logo_footer = is_array($rawLogoFooter)
+            ? $rawLogoFooter
+            : ($rawLogoFooter ? ['url' => $rawLogoFooter, 'alt' => ''] : null);
+
         return [
-            'siteName' => $this->siteName(),
-            'logo' => get_field('logo', 'option'),
-            'logo_footer' => get_field('logo_footer', 'option'),
+            'siteName'     => $this->siteName(),
+            'logo'         => $logo,
+            'logo_footer'  => $logo_footer,
             'social_media' => get_field('social_media', 'option') ?: [],
         ];
     }
