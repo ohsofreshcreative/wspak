@@ -54,6 +54,7 @@ class Voices extends Block
             ->addRepeater('r_voices', [
                 'label' => 'Kafelki',
                 'layout' => 'table',
+				'pagination' => 1,
                 'min' => 1,
                 'button_label' => 'Dodaj kafelek',
             ])
