@@ -1,7 +1,102 @@
+<!--- voices --->
+
 <section
-    @if(!empty($section_id)) id="{{ $section_id }}" @endif
-    class="b-voices {{ $section_class }} {{ $background }}"
->
+	data-gsap-anim="section"
+	@if(!empty($section_id)) id="{{ $section_id }}" @endif
+	@class([ 'b-voices relative -smt' ,
+	$sectionClass=> filled($sectionClass),
+	$section_class => filled($section_class),
+	$background => filled($background) && $background !== 'none',
+	])>
+
+	<div class="__wrapper c-main">
+		@if (!empty($g_voices))
+		<div class="__top">
+			<h2 data-gsap-element="header" class="m-header">{{ strip_tags($g_voices['header'] ?? '') }}</h2>
+			<p data-gsap-element="text">{{ $g_voices['text'] ?? '' }}</p>
+		</div>
+		@endif
+
+		@if (!empty($r_voices))
+		@php
+		$itemCount = count($r_voices);
+		$gridCols = 1;
+		if ($itemCount == 2) $gridCols = 2;
+		if ($itemCount == 3) $gridCols = 3;
+		if ($itemCount >= 4) $gridCols = 4;
+		$gridClass = $gridCols > 1 ? 'grid-cols-1 lg:grid-cols-' . $gridCols : 'grid-cols-1';
+		@endphp
+
+		<div class="grid {{ $gridClass }} gap-8 mt-10">
+			@foreach ($r_voices as $item)
+			<div data-gsap-element="card" class="__card relative bg-white p-8">
+				@if (!empty($item['image']['url']))
+				<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
+				@endif
+				@if (!empty($item['title']))
+				<p class="text-h5">{{ $item['title'] }}</p>
+				@endif
+				@if (!empty($item['text']))
+				<p>{{ $item['text'] }}</p>
+				@endif
+			</div>
+			@endforeach
+		</div>
+		@endif
+
+		@if (!empty($voices))
+		<div class="voices-section mt-12">
+
+			{{-- Filtry --}}
+			@php
+			$filterLabels = [
+				'gender' => 'Płeć',
+				'age'    => 'Wiek głosu',
+				'timbre' => 'Barwa',
+				'price'  => 'Grupa cenowa',
+				'style'  => 'Styl interpretacji',
+			];
+			@endphp
+			<div class="voices-filters flex flex-wrap gap-8 mb-8">
+				@foreach ($filterLabels as $key => $label)
+					@if (!empty($filters[$key]))
+					<div class="filter-group" data-filter-group="{{ $key }}">
+						<p class="filter-group__label font-semibold mb-2">{{ $label }}</p>
+						<div class="flex flex-wrap gap-2">
+							@foreach ($filters[$key] as $opt)
+							<label class="flex items-center gap-1 cursor-pointer">
+								<input type="checkbox" class="voice-filter" data-filter="{{ $key }}" value="{{ Str::slug($opt) }}">
+								{{ $opt }}
+							</label>
+							@endforeach
+						</div>
+					</div>
+					@endif
+				@endforeach
+			</div>
+
+			{{-- Karty głosów --}}
+			<div class="grid grid-cols-3 gap-6">
+				@foreach ($voices as $voice)
+				<div class="voice-card p-4 border"
+					data-gender="{{ Str::slug($voice['gender'] ?? '') }}"
+					data-age="{{ Str::slug($voice['age'] ?? '') }}"
+					data-timbre="{{ Str::slug($voice['timbre'] ?? '') }}"
+					data-price="{{ Str::slug($voice['price'] ?? '') }}"
+					data-style="{{ Str::slug($voice['style'] ?? '') }}">
+
+					<h3 class="font-bold">{{ $voice['name'] }}</h3>
+					<p>Płeć: {{ $voice['gender'] }} | Wiek: {{ $voice['age'] }}</p>
+				</div>
+				@endforeach
+			</div>
+
+		</div>
+		@endif
+
+	</div>
+
+</section>
     <div class="c-main"> 
         
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
