@@ -10,10 +10,10 @@ $social_media = get_field('social_media', 'option');
     <!-- Desktop Header -->
     <div class="items-center justify-between hidden h-full py-4 px-12 mx-auto lg:flex">
         <a class="brand shrink-0" href="{{ home_url('/') }}">
-            @if ($logo)
-            <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-20">
+            @if (is_array($logo) && !empty($logo['url']))
+                <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-20">
             @else
-            <span class="text-xl font-bold">{{ $siteName }}</span>
+                <span class="text-xl font-bold">{{ $siteName }}</span>
             @endif
         </a>
         @if (has_nav_menu('primary_navigation'))
@@ -41,10 +41,10 @@ $social_media = get_field('social_media', 'option');
     <!-- Mobile Header Bar -->
     <div class="flex items-center justify-between p-4 mobile-menu fixed-top lg:hidden">
         <a class="brand shrink-0" href="{{ home_url('/') }}">
-            @if ($logo)
-            <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-18">
+            @if (is_array($logo) && !empty($logo['url']))
+                <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-18">
             @else
-            <span class="text-lg font-bold">{{ $siteName }}</span>
+                <span class="text-lg font-bold">{{ $siteName }}</span>
             @endif
         </a>
         <button
@@ -78,7 +78,13 @@ $social_media = get_field('social_media', 'option');
         aria-label="Menu mobilne">
         <div class="p-4 relative z-10">
             <div class="flex items-center justify-between mb-6">
-                <span class=""><a class="brand shrink-0" href="{{ home_url('/') }}"><img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-18"></a></span>
+                <a class="brand shrink-0" href="{{ home_url('/') }}">
+                    @if (is_array($logo) && !empty($logo['url']))
+                        <img src="{{ $logo['url'] }}" alt="{{ $logo['alt'] ?? 'Logo' }}" class="w-auto h-18">
+                    @else
+                        <span class="text-lg font-bold text-white">{{ $siteName }}</span>
+                    @endif
+                </a>
                 <button
                     @click="mobileOpen = false"
                     class="p-2 text-white rounded-md">

@@ -42,5 +42,34 @@
 		top: -80px;
 		z-index: 30;
 	}
+
+	.swiper-slide {
+		.review-content-wrapper {
+			img {
+				transition: padding 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+				padding-left: 24px;
+				padding-right: 0;
+			}
+		}
+
+		&.swiper-slide-active {
+			.review-content-wrapper {
+				img {
+					padding-left: 30px;
+					padding-right: 0;
+				}
+			}
+		}
+
+		&.swiper-slide-next {
+			.review-content-wrapper {
+				img {
+					margin-left: -50px;
+					padding-right: 0px;
+				}
+			}
+		}
+
+	}
 }
 

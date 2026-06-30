@@ -13,12 +13,10 @@
 		<div class="__content order2">
 			<div class="__txt w-full md:w-1/2 mx-auto">
 				<h2 data-gsap-element="header" class="text-center m-header">{{ $g_overlap['header'] }}</h2>
-
 				<div data-gsap-element="header" class="text-center">
 					{!! $g_overlap['text'] !!}
 				</div>
 			</div>
-
 			<div class="grid grid-cols-1 gap-8 mt-14">
 				@foreach ($r_overlap as $item)
 				<div class="gsap__cards __cards sticky top-20 mt-4">
@@ -39,7 +37,6 @@
 				</div>
 				@endforeach
 			</div>
-
 		</div>
 	</div>
 </section>

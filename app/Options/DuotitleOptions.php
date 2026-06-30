@@ -56,8 +56,40 @@ class DuotitleOptions extends Options
                 ->addText('text_number', [
                     'label' => 'Tekst do liczby',
                 ])
-            ->endGroup();
-
+            ->endGroup()
+	->addTab('Głosy', ['placement' => 'top'])
+            ->addRepeater('voices', [
+                'label' => 'Głosy',
+                'layout' => 'row',
+                'pagination' => 1,
+                'rows_per_page' => 10,
+                'button_label' => 'Dodaj głos',
+            ])
+                ->addImage('avatar', [
+                    'label' => 'Zdjęcie / Avatar',
+                    'return_format' => 'url',
+                    'preview_size' => 'thumbnail',
+                ])
+                ->addRepeater('audio_tracks', [
+                    'label' => 'Pliki audio',
+                    'layout' => 'table',
+                    'button_label' => 'Dodaj nagranie',
+                    'min' => 1,
+                ])
+                    ->addFile('file', [
+                        'label' => 'Plik audio',
+                        'return_format' => 'url',
+                        'mime_types' => 'mp3,wav,ogg',
+                        'required' => 1,
+                    ])
+                ->endRepeater()
+                ->addText('name', ['label' => 'Imię Lektora'])
+                ->addText('gender', ['label' => 'Płeć'])
+                ->addText('age', ['label' => 'Wiek głosu'])
+                ->addText('timbre', ['label' => 'Barwa'])
+                ->addText('price', ['label' => 'Grupa cenowa'])
+                ->addText('style', ['label' => 'Styl interpretacji'])
+            ->endRepeater();
         return $DuotitleOptions->build();
     }
 }

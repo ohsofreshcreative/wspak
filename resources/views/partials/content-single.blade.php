@@ -31,19 +31,50 @@ $category = !empty($categories) ? $categories[0] : null;
 				{!! get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'w-full object-cover']) !!}
 			</div>
 			@endif
+@php
+$cta = get_field('cta_box');
+@endphp
+@if(!empty($cta['show']))
+<div class="_box mt-auto relative h-[320px] lg:h-[390px] w-full radius overflow-hidden flex flex-col justify-end">
 
-			<div class="_box mt-auto relative h-[320px] lg:h-[390px] w-full radius  overflow-hidden flex flex-col justify-end">
-			  <div class="absolute inset-0 z-1 pointer-events-none radius ">
-            <img class="w-full h-full object-cover radius " src="/wp-content/uploads/2026/06/box.jpg">
-<div class="absolute inset-0  mix-blend-multiply opacity-90 " style="background: linear-gradient(0deg, #123071 5%, #E65796 93%);"></div>     
-   </div>
-   <div class="_content z-20 relative mt-auto p-8">
-			<h5 class="text-white z-10 mb-3">Chcesz zrealizować własny audiobook?</h5>
- <a href="/uslugi/" class="btn btn-secondary">
-                Poznaj ofertę
+    <div class="absolute inset-0 z-1 pointer-events-none radius">
+
+        @if(!empty($cta['image']))
+            {!! wp_get_attachment_image(
+                $cta['image'],
+                'large',
+                false,
+                ['class' => 'w-full h-full object-cover radius']
+            ) !!}
+        @endif
+
+        <div class="absolute inset-0 opacity-80"
+             style="background: linear-gradient(0deg, #123071 5%, #E65796 93%);">
+        </div>
+
+    </div>
+
+    <div class="_content z-20 relative mt-auto p-8">
+
+        @if(!empty($cta['title']))
+            <h5 class="text-white mb-3">
+                {{ $cta['title'] }}
+            </h5>
+        @endif
+
+        @if(!empty($cta['button']))
+            <a
+                href="{{ $cta['button']['url'] }}"
+                target="{{ $cta['button']['target'] }}"
+                class="btn btn-secondary">
+                {{ $cta['button']['title'] }}
             </a>
-			</div>
-			</div>
+        @endif
+
+    </div>
+
+</div>
+@endif
 
 
 		</div>

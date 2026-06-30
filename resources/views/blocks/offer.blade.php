@@ -2,7 +2,7 @@
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	@class([ 'b-offer z-5 relative -mt-[100px] !overflow-visible' ,
+	@class([ 'b-offer z-5 relative -mt-25 !overflow-visible' ,
 	$sectionClass=> filled($sectionClass),
 	$section_class => filled($section_class),
 	$background => filled($background) && $background !== 'none',
@@ -17,10 +17,10 @@
 			$icon_id = get_field('offer_icon', $post->ID);
 			@endphp
 
-			<div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-6 items-stretch group ">
+			<div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 items-stretch group ">
 
 				<!-- contents-->
-				<div class="bg-gradient-main radius flex flex-col justify-between relative p-10 ">
+				<div class="bg-gradient-main radius flex flex-col justify-between relative p-10 h-[420px]  lg:h-full lg:max-h-[366px]">
 					<a href="{{ get_permalink($post->ID) }}" class="absolute inset-0 z-30" aria-label="{{ get_the_title($post->ID) }}"></a>
 					<div>
 						@if(!empty($icon_id))
@@ -34,19 +34,19 @@
 						</h5>
 
 						@if($show_excerpt)
-						<div class="!text-white text-lg">
+						<div class="_txt !text-white ">
 							{!! get_the_excerpt($post->ID) !!}
 						</div>
 						@endif
 					</div>
 
-					<div class="mt-14s">
-						<x-icon.arrow-right class=" block text-white transform group-hover:translate-x-1 transition-transform " />
+					<div class="mt-10">
+						<x-icon.arrow-right class=" block text-white transform group-hover:translate-x-1 transition-transform h-12 w-12 md:h-16 md:w-16" />
 					</div>
 				</div>
 
 				<!-- Zdjęcie z prawej -->
-				<div class="radius overflow-hidden relative  !max-h-86">
+				<div class="radius overflow-hidden relative h-[420px]  lg:h-full lg:max-h-[366px]">
 					@if($image_url)
 					<img src="{{ $image_url }}" alt="{{ get_the_title($post->ID) }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
 					<a href="{{ get_permalink($post->ID) }}" class="absolute inset-0 z-30" aria-label="{{ get_the_title($post->ID) }}"></a>

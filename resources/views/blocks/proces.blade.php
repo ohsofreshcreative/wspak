@@ -18,7 +18,6 @@
 				<div data-gsap-element="txt" class="">{{ strip_tags($g_proces['txt']) }}</div>
 			</div>
 		</div>
-
 		@if (!empty($r_proces))
 		@php
 		$repeater_count = count($r_proces);
@@ -28,7 +27,6 @@
 		}
 		@endphp
 		<div class="__repeater gap-8 grid grid-cols-1 md:grid-cols-2 {{ $grid_class }} mt-16">
-
 			@foreach ($r_proces as $item)
 			<div data-gsap-element="stagger" class="flex flex-col bg-primary radius p-6">
 				<div class="relative z-20">
@@ -44,5 +42,4 @@
 		<div class="__line absolute bg-primary z-0 origin-left scale-x-0"></div>
 		@endif
 	</div>
-
 </section>

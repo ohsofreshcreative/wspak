@@ -9,7 +9,7 @@ use App\Support\SectionClasses;
 class DuotitleBlock extends Block
 {
 	public $name = 'Sekcja - Bank głosów';
-	public $description = 'duotitle - text oraz zdjęcie';
+	public $description = 'duotitle-block - text oraz zdjęcie';
 	public $slug = 'duotitle-block';
 	public $category = 'formatting';
 	public $keywords = ['tresc', 'zdjecie', 'duotitle' ];
@@ -33,7 +33,7 @@ public $supports = [
                 'required' => 0,
             ])
             ->addAccordion('accordion1', [
-                'label' => 'Informacje i ustawienia',
+                'label' => 'Zdjęcie, treść i kafelki audio',
                 'open' => false,
                 'multi_expand' => true,
             ])
@@ -97,6 +97,7 @@ public $supports = [
         $fields = [
             // Pobieranie danych GLOBALNYCH z Options Page ('option')
             'g_duotitle'   => get_field('g_duotitle', 'option') ?: [],
+			'voices'       => get_field('voices', 'option') ?: [],
 
             // Ustawienia LOKALNE konkretnego bloku
             'section_id'    => get_field('section_id'),

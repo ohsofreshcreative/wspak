@@ -12,6 +12,9 @@ import.meta.glob(['../images/**', '../fonts/**']);
 import './menubar.js';
 import './footer-accordion.js';
 
+// Importujemy głosy OD RAZU. To zarejestruje 'audioPlayer' zanim wystartuje Alpine.
+import './blocks/voices.js'; 
+
 /*--- USED ---*/
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,14 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (document.querySelector('.b-slider')) import('./blocks/slider');
 	if (document.querySelector('.b-category')) import('./blocks/category');
 	if (document.querySelector('.b-partners')) import('./blocks/partners');
-	if (document.querySelector('.b-voices')) import('./blocks/voices');
+	
 
 });
 
 /*--- NOT USED ---*/
 
 /*--- INICJALIZACJA BIBLIOTEK ---*/
-// Uruchom Alpine.js
 window.Alpine = Alpine;
 Alpine.start();
 

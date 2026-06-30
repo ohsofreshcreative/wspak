@@ -10,7 +10,6 @@
 	])>
 
 	<div class="__wrapper py-12" style="background-image:linear-gradient(rgba(19,42,35,0.7), rgba(13, 63, 47,0.7)), url('{{ $g_cta['image']['url'] }}'); background-size:cover; background-position:center;">
-
 		<div class="__inside items-center gap-6 px-12">
 			<div class="__content">
 				@if ($g_cta['header'])
@@ -20,7 +19,6 @@
 				<div data-gsap-element="txt" class="text-secondary text-xl mt-1">{!! $g_cta['txt'] !!}</div>
 				@endif
 			</div>
-
 			<div class="inline-buttons m-btn">
 				@if (!empty($g_cta['button1']))
 				<x-button
@@ -31,7 +29,6 @@
 					{{ $g_cta['button1']['title'] }}
 				</x-button>
 				@endif
-
 				@if (!empty($g_cta['button2']))
 				<x-button
 					:href="$g_cta['button2']['url']"
@@ -43,7 +40,5 @@
 				@endif
 			</div>
 		</div>
-
 	</div>
-
 </section>

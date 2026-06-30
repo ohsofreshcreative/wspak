@@ -1,0 +1,51 @@
+.b-voices{
+	.voice-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+
+    .voice-filter {
+        appearance: none;
+        -webkit-appearance: none;
+
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+
+        border: 2px solid var(--color-primary);
+        border-radius: 8px;
+        background: #fff;
+
+        cursor: pointer;
+        transition: .2s ease;
+
+        &:hover {
+            border-color: var(--color-primary-700);
+        }
+
+        &:checked {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        &:checked::after {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 12px;
+            margin: 2px auto 0;
+
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        &:focus-visible {
+            outline: 2px solid rgba(0, 87, 155, .25);
+            outline-offset: 2px;
+        }
+    }
+}
+}

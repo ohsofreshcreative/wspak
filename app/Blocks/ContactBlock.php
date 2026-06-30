@@ -33,7 +33,7 @@ class ContactBlock extends Block
                 'required' => 0,
             ])
             ->addAccordion('accordion1', [
-                'label' => 'Informacje i ustawienia',
+                'label' => 'Dane kontaktowe i formularz',
                 'open' => false,
                 'multi_expand' => true,
             ])

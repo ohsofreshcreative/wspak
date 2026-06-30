@@ -1494,9 +1494,19 @@
           "color": "rgb(var(--p-500))"
         },
         {
+          "name": "Primary (700)",
+          "slug": "primary-700",
+          "color": "rgb(var(--p-700))"
+        },
+        {
           "name": "Primary (900)",
           "slug": "primary-900",
           "color": "rgb(var(--p-900))"
+        },
+        {
+          "name": "Primary (25)",
+          "slug": "primary-25",
+          "color": "rgb(var(--p-25))"
         },
         {
           "name": "Secondary",

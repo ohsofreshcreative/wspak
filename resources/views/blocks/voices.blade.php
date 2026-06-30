@@ -1,5 +1,3 @@
-<!--- voices --->
-
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
@@ -17,261 +15,194 @@
 		</div>
 		@endif
 
-		@if (!empty($r_voices))
-		@php
-		$itemCount = count($r_voices);
-		$gridCols = 1;
-		if ($itemCount == 2) $gridCols = 2;
-		if ($itemCount == 3) $gridCols = 3;
-		if ($itemCount >= 4) $gridCols = 4;
-		$gridClass = $gridCols > 1 ? 'grid-cols-1 lg:grid-cols-' . $gridCols : 'grid-cols-1';
-		@endphp
-
-		<div class="grid {{ $gridClass }} gap-8 mt-10">
-			@foreach ($r_voices as $item)
-			<div data-gsap-element="card" class="__card relative bg-white p-8">
-				@if (!empty($item['image']['url']))
-				<img class="mb-6" src="{{ $item['image']['url'] }}" alt="{{ $item['image']['alt'] ?? '' }}" />
-				@endif
-				@if (!empty($item['title']))
-				<p class="text-h5">{{ $item['title'] }}</p>
-				@endif
-				@if (!empty($item['text']))
-				<p>{{ $item['text'] }}</p>
-				@endif
-			</div>
-			@endforeach
-		</div>
-		@endif
-
 		@if (!empty($voices))
-		<div class="voices-section mt-12">
+		<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 
-			{{-- Filtry --}}
-			@php
-			$filterLabels = [
+			{{-- SEKCJA FILTRÓW (PO LEWEJ STRONIE) --}}
+			<div class="voices-section col-span-1 mb-8 md:mb-0">
+				@php
+				$filterLabels = [
 				'gender' => 'Płeć',
-				'age'    => 'Wiek głosu',
+				'age' => 'Wiek głosu',
 				'timbre' => 'Barwa',
-				'price'  => 'Grupa cenowa',
-				'style'  => 'Styl interpretacji',
-			];
-			@endphp
-			<div class="voices-filters flex flex-wrap gap-8 mb-8">
-				@foreach ($filterLabels as $key => $label)
+				'price' => 'Grupa cenowa',
+				'style' => 'Styl interpretacji',
+				];
+				@endphp
+				<div class="voices-filters flex flex-col gap-6">
+					@foreach ($filterLabels as $key => $label)
 					@if (!empty($filters[$key]))
-					<div class="filter-group" data-filter-group="{{ $key }}">
-						<p class="filter-group__label font-semibold mb-2">{{ $label }}</p>
-						<div class="flex flex-wrap gap-2">
+					<div class="filter-group border-b border-secondary pb-4" data-filter-group="{{ $key }}">
+						<p class="filter-group__label !font-semibold pb-4">{{ $label }}</p>
+						<div class="flex gap-2 flex-col">
 							@foreach ($filters[$key] as $opt)
-							<label class="flex items-center gap-1 cursor-pointer">
-								<input type="checkbox" class="voice-filter" data-filter="{{ $key }}" value="{{ Str::slug($opt) }}">
-								{{ $opt }}
+							<label class="voice-checkbox">
+								<input
+									type="checkbox"
+									class="voice-filter"
+									data-filter="{{ $key }}"
+									value="{{ Str::slug($opt) }}">
+								<span class="text-lg font-medium">{{ $opt }}</span>
 							</label>
 							@endforeach
 						</div>
 					</div>
 					@endif
-				@endforeach
-			</div>
-
-			{{-- Karty głosów --}}
-			<div class="grid grid-cols-3 gap-6">
-				@foreach ($voices as $voice)
-				<div class="voice-card p-4 border"
-					data-gender="{{ Str::slug($voice['gender'] ?? '') }}"
-					data-age="{{ Str::slug($voice['age'] ?? '') }}"
-					data-timbre="{{ Str::slug($voice['timbre'] ?? '') }}"
-					data-price="{{ Str::slug($voice['price'] ?? '') }}"
-					data-style="{{ Str::slug($voice['style'] ?? '') }}">
-
-					<h3 class="font-bold">{{ $voice['name'] }}</h3>
-					<p>Płeć: {{ $voice['gender'] }} | Wiek: {{ $voice['age'] }}</p>
+					@endforeach
 				</div>
-				@endforeach
 			</div>
 
+			{{-- KAFELKI - prawa strona--}}
+			<div class="col-span-1 md:col-span-3 flex flex-col gap-10">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start ">
+					@foreach ($voices as $voice)
+					<div class="voice-card p-4 bg-white radius"
+						data-gender="{{ Str::slug($voice['gender'] ?? '') }}"
+						data-age="{{ Str::slug($voice['age'] ?? '') }}"
+						data-timbre="{{ Str::slug($voice['timbre'] ?? '') }}"
+						data-price="{{ Str::slug($voice['price'] ?? '') }}"
+						data-style="{{ Str::slug($voice['style'] ?? '') }}">
+
+						{{-- Górna sekcja --}}
+						<div class="flex justify-between items-start">
+							<div class="flex flex-col min-h-[76px]">
+								<div class="flex items-center gap-1 mb-6">
+									@php
+									$count = (($voice['price'] ?? '') == 'premium') ? 3 : ((($voice['price'] ?? '') == 'ekonomiczna') ? 2 : 1);
+									@endphp
+									@for ($i = 0; $i < $count; $i++)
+										<x-icon.price-icon class="w-2 h-auto flex-shrink-0" />
+									@endfor
+								</div>
+
+								<h3 class="!text-2xl !font-bold">
+									{{ $voice['name'] ?? '' }}
+								</h3>
+							</div>
+							@if(!empty($voice['avatar']))
+							<img
+								src="{{ $voice['avatar'] }}"
+								alt="{{ $voice['name'] ?? '' }}"
+								class="w-19 h-19 rounded-full object-cover flex-shrink-0 ml-4">
+							@endif
+						</div>
+
+						{{-- Tagi --}}
+						<div class="flex flex-wrap gap-1 mt-4 mb-4">
+							@if(!empty($voice['age']))
+							<span class="bg-primary-25 text-primary-900 text-xs font-medium px-2 py-1 rounded-[48px]">
+								{{ trim($voice['age']) }}
+							</span>
+							@endif
+							@if(!empty($voice['timbre']))
+							@foreach(explode(',', $voice['timbre']) as $tag)
+							<span class="bg-primary-25 text-primary-900 text-xs font-medium px-2 py-1 rounded-[48px]">
+								{{ trim($tag) }}
+							</span>
+							@endforeach
+							@endif
+							@if(!empty($voice['style']))
+							@foreach(explode(',', $voice['style']) as $tag)
+							<span class="bg-primary-25 text-primary-900 text-xs font-medium px-2 py-1 rounded-[48px]">
+								{{ trim($tag) }}
+							</span>
+							@endforeach
+							@endif
+						</div>
+
+						<span class="text-lg text-primary-100 !font-semibold block mb-2">
+							Próbka
+						</span>
+
+						{{-- Audio --}}
+						<div class="voice-audio-tracks flex flex-wrap gap-4 items-center mb-4">
+							@if(!empty($voice['audio_tracks']))
+							@foreach($voice['audio_tracks'] as $track)
+							@if(!empty($track['file']))
+							<div class="voice-player relative" x-data="audioPlayer('{{ $track['file'] }}')">
+								<audio x-ref="audio" preload="none">
+									<source src="{{ $track['file'] }}" type="audio/mpeg">
+								</audio>
+								<div class="relative w-10 h-10 flex items-center justify-center">
+									<svg class="absolute top-0 left-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+										<circle cx="50%" cy="50%" r="42" fill="none" stroke="#E2E8F0" stroke-width="10" />
+										<circle
+											cx="50%"
+											cy="50%"
+											r="42"
+											fill="none"
+											stroke="#00579B"
+											stroke-width="10"
+											stroke-dasharray="263.89"
+											:stroke-dashoffset="263.89 - (263.89 * progress / 100)"
+											stroke-linecap="round" />
+									</svg>
+
+									<button
+										@click="togglePlay"
+										type="button"
+										class="relative z-10 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+
+										<svg x-show="!isPlaying" class="w-9 h-9" viewBox="0 0 43 43">
+											<path d="M31.6304 24.2657L18.4714 31.863C17.9711 32.1513 17.4228 32.2959 16.8746 32.2959C16.3263 32.2959 15.7781 32.1513 15.2777 31.863C14.278 31.2854 13.6808 30.2525 13.6808 29.0973V13.9027C13.6808 12.7485 14.278 11.7146 15.2777 11.137C16.2775 10.5594 17.4707 10.5594 18.4705 11.137L31.6294 18.7343C32.6292 19.3119 33.2263 20.3449 33.2263 21.5C33.2263 22.6551 32.6302 23.6881 31.6304 24.2657Z" fill="white" />
+										</svg>
+
+										<svg x-show="isPlaying" x-cloak class="w-6 h-6" viewBox="0 0 24 24">
+											<path d="M6 19h4V5H6zm8-14v14h4V5z"  fill="white" />
+										</svg>
+									</button>
+								</div>
+							</div>
+							@endif
+							@endforeach
+							@endif
+						</div>
+
+						<button
+							type="button"
+							class="btn btn-secondary !px-4 !py-2 !text-sm">
+							Wybierz głos
+						</button>
+					</div>
+					@endforeach
+				</div>
+
+				@if(($voices_pages ?? 1) > 1)
+				<div class="flex justify-center items-center gap-2 mt-4">
+					{{-- PREV --}}
+					@if(($voices_page ?? 1) > 1)
+					<a href="?vp={{ $voices_page - 1 }}"
+						class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white hover:opacity-80 transition-opacity">
+						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+							<path d="M9.12868 6.58362L5.37373e-06 6.58362L0 5.08363L9.12868 5.08363L5.10571 1.06066L6.16638 0L12 5.83362L6.16637 11.6673L5.1057 10.6066L9.12868 6.58362Z"
+								fill="white"
+								transform="rotate(180 6 6)" />
+						</svg>
+					</a>
+					@endif
+
+					{{-- NUMERY --}}
+					@for($i = 1; $i <= $voices_pages; $i++)
+					<a href="?vp={{ $i }}"
+						class="px-4 py-2 rounded-lg border !text-primary-900 {{ ($voices_page ?? 1) == $i ? 'border-primary-900' : 'border-primary-100' }}">
+						{{ $i }}
+					</a>
+					@endfor
+
+					{{-- NEXT --}}
+					@if(($voices_page ?? 1) < $voices_pages)
+					<a href="?vp={{ $voices_page + 1 }}"
+						class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white hover:opacity-80 transition-opacity">
+						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+							<path d="M9.12868 6.58362L5.37373e-06 6.58362L0 5.08363L9.12868 5.08363L5.10571 1.06066L6.16638 0L12 5.83362L6.16637 11.6673L5.1057 10.6066L9.12868 6.58362Z" fill="white" />
+						</svg>
+					</a>
+					@endif
+				</div>
+				@endif
+			</div>
 		</div>
 		@endif
 
 	</div>
-
-</section>
-    <div class="c-main"> 
-        
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            
-            <aside class="lg:col-span-1">
-                <form action="" method="GET" id="filter-form" class="grid grid-cols-1 gap-6">
-                    
-                    <div class="filter-group">
-                        <h4>Płeć</h4>
-                        @foreach(get_terms(['taxonomy' => 'voice_gender', 'hide_empty' => false]) as $term)
-                            <label class="flex items-center gap-2">
-                                <input type="checkbox" name="gender[]" value="{{ $term->slug }}">
-                                <span>{{ $term->name }}</span>
-                            </label>
-                        @endforeach
-                    </div>
-
-                    <div class="filter-group">
-                        <h4>Wiek głosu</h4>
-                        @foreach(get_terms(['taxonomy' => 'voice_age', 'hide_empty' => false]) as $term)
-                            <label class="flex items-center gap-2">
-                                <input type="checkbox" name="age[]" value="{{ $term->slug }}">
-                                <span>{{ $term->name }}</span>
-                            </label>
-                        @endforeach
-                    </div>
-
-                    <div class="filter-group">
-                        <h4>Grupa cenowa</h4>
-                        @foreach(get_terms(['taxonomy' => 'voice_price', 'hide_empty' => false]) as $term)
-                            <label class="flex items-center gap-2">
-                                <input type="checkbox" name="price[]" value="{{ $term->slug }}">
-                                <span>{{ $term->name }}</span>
-                            </label>
-                        @endforeach
-                    </div>
-					<div class="filter-group">
-    <h4>Barwa głosu</h4>
-
-    @foreach(get_terms(['taxonomy' => 'voice_tone', 'hide_empty' => false]) as $term)
-        <label class="flex items-center gap-2">
-            <input type="checkbox" name="tone[]" value="{{ $term->slug }}">
-            <span>{{ $term->name }}</span>
-        </label>
-    @endforeach
-</div>
-<div class="filter-group">
-    <h4>Zastosowanie</h4>
-
-    @foreach(get_terms(['taxonomy' => 'voice_usage', 'hide_empty' => false]) as $term)
-        <label class="flex items-center gap-2">
-            <input type="checkbox" name="usage[]" value="{{ $term->slug }}">
-            <span>{{ $term->name }}</span>
-        </label>
-    @endforeach
-</div>
-
-                </form>
-            </aside>
-
-            <div class="lg:col-span-3">
-                @if(!empty($voices))
-                    
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-    @foreach($voices as $voice)
-
-        @php
-            $avatar_id = get_post_thumbnail_id($voice->ID);
-            $avatar_url = $avatar_id ? wp_get_attachment_image_url($avatar_id, 'thumbnail') : null;
-
-            $audio_file = get_field('voice_sample', $voice->ID);
-
-            $genders = wp_get_post_terms($voice->ID, 'voice_gender', ['fields' => 'names']);
-            $ages = wp_get_post_terms($voice->ID, 'voice_age', ['fields' => 'names']);
-            $tones = wp_get_post_terms($voice->ID, 'voice_tone', ['fields' => 'names']);
-            $styles = wp_get_post_terms($voice->ID, 'voice_style', ['fields' => 'names']);
-            $usage = wp_get_post_terms($voice->ID, 'voice_usage', ['fields' => 'names']);
-
-            $price = wp_get_post_terms($voice->ID, 'voice_price', ['fields' => 'names']);
-
-            $tags = array_merge(
-                $genders,
-                $ages,
-                $tones,
-                $styles,
-                $usage
-            );
-        @endphp
-
-        <div class="voice-card grid grid-cols-1 gap-4">
-
-            <div class="flex justify-between items-start">
-
-                <div>
-
-                    @if(!empty($price))
-                        <span class="price-tier">{{ $price[0] }}</span>
-                    @endif
-
-                    <h3>{{ get_the_title($voice->ID) }}</h3>
-
-                    <div class="flex flex-wrap gap-2">
-                        @foreach($tags as $tag)
-                            <span class="tag">{{ $tag }}</span>
-                        @endforeach
-                    </div>
-
-                </div>
-
-                @if($avatar_url)
-                    <img
-                        src="{{ $avatar_url }}"
-                        alt="{{ get_the_title($voice->ID) }}"
-                    >
-                @endif
-
-            </div>
-
-            <div class="voice-player">
-
-                @if($audio_file)
-
-                    <div class="flex items-center gap-4">
-
-                        <button class="js-audio-play">
-                            ▶
-                        </button>
-
-                        <audio
-                            class="js-voice-audio"
-                            src="{{ $audio_file['url'] }}">
-                        </audio>
-
-                        <div class="w-full bg-gray-200 h-1 relative">
-                            <div class="bg-black h-1 w-0 js-audio-progress"></div>
-                        </div>
-
-                    </div>
-
-                @endif
-
-            </div>
-
-            <button class="w-full">
-                Wybierz głos
-            </button>
-
-        </div>
-
-    @endforeach
-
-</div>
-
-                    <!-- @if(isset($max_pages) && $max_pages > 1)
-                        <div class="pagination flex justify-center gap-4">
-                            {!! paginate_links([
-                                'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
-                                'format' => '?paged=%#%',
-                                'current' => $current_page ?? 1,
-                                'total' => $max_pages,
-                                'prev_text' => '&larr;',
-                                'next_text' => '&rarr;',
-                                'type' => 'list'
-                            ]) !!}
-                        </div>
-                    @endif
-
-                @else
-                    <div class="no-results">
-                        Brak lektorów spełniających kryteria.
-                    </div>
-                @endif -->
-            </div>
-
-        </div>
-    </div>
 </section>

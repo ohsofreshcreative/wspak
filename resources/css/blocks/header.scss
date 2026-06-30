@@ -14,4 +14,14 @@
 		top: 80px;
 
 	}
+
+	.blur {
+		width: 915px;
+		height: 915px;
+		left: 142px;
+		bottom: -439px;
+		border-radius: 915px;
+		mix-blend-mode: overlay;
+		filter: blur(125px);
+	}
 }

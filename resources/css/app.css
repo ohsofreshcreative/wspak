@@ -39,7 +39,8 @@
 	/* #061026 */
 	--p-dark: 4 10 23;
 	/* #040A17 */
-
+	--p-25: 221 237 255;
+	/* #DDEFFF */
 	--action: rgb(18, 48, 113);
 	/* #123071 */
 
@@ -112,7 +113,6 @@
 	--bg-blue: #E7F2FF;
 	--bg-brand: #002704;
 	--bg-dark: #071622;
-
 	--custom-blue: 2 28 85;
 	/* #021C55 */
 }
@@ -135,6 +135,7 @@
 	--color-primary-800: rgb(var(--p-800));
 	--color-primary-900: rgb(var(--p-900));
 	--color-primary-dark: rgb(var(--p-dark));
+	--color-primary-25: rgb(var(--p-25));
 
 	/* secondary */
 	--color-secondary: rgb(var(--secondary));
@@ -187,6 +188,7 @@
 	--gradient-lighter: linear-gradient(90deg, #00579B 5%, #E65796 93%);
 	--gradient-main: linear-gradient(90deg, #061026 0%, #123071 100%);
 	--gradient-p: linear-gradient(90deg, #123071 5%, #E65796 93%);
+	--gradient-vertical: linear-gradient(180deg, #061026 0%, #123071 100%);
 
 }
 
@@ -221,6 +223,7 @@
 @import '../css/blocks/banner.scss';
 @import '../css/blocks/logos.scss';
 @import '../css/blocks/teaser.scss';
+@import '../css/blocks/voices.scss';
 
 /*-- NOT USED ---*/
 @import '../css/blocks/accordion.scss';

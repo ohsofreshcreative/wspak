@@ -23,7 +23,7 @@
 				}
 				@endphp
 				@if(!empty($cat_name))
-				<span class="inline-block bg-[#DDEDFF] text-primary-900 text-xs font-medium px-2 py-1 rounded-[48px]">
+				<span class="inline-block bg-primary-25 text-primary-900 text-xs font-medium px-2 py-1 rounded-[48px]">
 					{{ $cat_name }}
 				</span>
 				@endif

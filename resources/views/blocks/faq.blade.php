@@ -10,7 +10,6 @@
 	])>
 
 	<div class="__wrapper c-main grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-20">
-
 		<div class="__content">
 			<h2 data-gsap-element="header" class="">{{ $g_faq['header'] }}</h2>
 			<div class="inline-buttons m-btn mb-6 md:mb-0">
@@ -41,7 +40,5 @@
 			</div>
 			@endforeach
 		</div>
-
 	</div>
-
 </section>
