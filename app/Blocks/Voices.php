@@ -70,7 +70,6 @@ class Voices extends Block
 			->addText('style', ['label' => 'Styl interpretacji'])
 			->endRepeater()
 
-<<<<<<< HEAD
 			->addTab('Ustawienia bloku', ['placement' => 'top'])
 			->addText('section_id', ['label' => 'ID'])
 			->addText('section_class', ['label' => 'Dodatkowe klasy CSS'])
@@ -113,24 +112,6 @@ class Voices extends Block
 				'ui' => 0,
 				'allow_null' => 0,
 			]);
-=======
-            ->addTab('Kafelki', ['placement' => 'top'])
-            ->addRepeater('r_voices', [
-                'label' => 'Kafelki',
-                'layout' => 'table',
-				'pagination' => 1,
-                'min' => 1,
-                'button_label' => 'Dodaj kafelek',
-            ])
-            ->addImage('image', [
-                'label' => 'Obraz',
-                'return_format' => 'array',
-                'preview_size' => 'thumbnail',
-            ])
-            ->addText('title', ['label' => 'Nagłówek'])
-            ->addTextarea('text', ['label' => 'Opis'])
-            ->endRepeater()
->>>>>>> 44050170ec362a6338f48361ea8987841e560b77
 
 		return $voices;
 	}

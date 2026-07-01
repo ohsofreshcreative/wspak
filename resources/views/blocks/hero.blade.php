@@ -14,7 +14,7 @@
 			@php
 			$carouselWords = collect($g_hero['r_hero'] ?? [])->pluck('title')->filter()->toArray();
 			$wordCount = count($carouselWords);
-			@endphp
+			@endph123p
 			<h1 class="hero-main-title flex flex-wrap items-baseline gap-y-2 w-full md:w-2/3 font-light">
 				<span class="title-part ">{{ $g_hero['title'] ?? '' }}</span>
 				@if($wordCount > 0)

@@ -83,9 +83,6 @@ $unique_id = 'clip_'.uniqid();
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
 	@class([ 'b-contact-block bg-primary-900 text-white -spt -spb relative -smt overflow-hidden' ,
-	$sectionClass=> filled($sectionClass),
-	$section_class => filled($section_class),
-	$background => filled($background) && $background !== 'none',
 	])>
 
 	<div class="blur bg-primary-100 absolute"></div>
