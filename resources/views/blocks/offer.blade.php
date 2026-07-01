@@ -20,7 +20,7 @@
 			<div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 items-stretch group ">
 
 				<!-- contents-->
-				<div class="bg-gradient-main radius flex flex-col justify-between relative p-10 h-[420px]  lg:h-full lg:max-h-[366px]">
+				<div data-gsap-element="card" class="bg-gradient-main radius flex flex-col justify-between relative p-10 h-[420px]  lg:h-full lg:max-h-[366px]">
 					<a href="{{ get_permalink($post->ID) }}" class="absolute inset-0 z-30" aria-label="{{ get_the_title($post->ID) }}"></a>
 					<div>
 						@if(!empty($icon_id))
@@ -46,7 +46,7 @@
 				</div>
 
 				<!-- Zdjęcie z prawej -->
-				<div class="radius overflow-hidden relative h-[420px]  lg:h-full lg:max-h-[366px]">
+				<div data-gsap-element="card" class="radius overflow-hidden relative h-[420px]  lg:h-full lg:max-h-[366px]">
 					@if($image_url)
 					<img src="{{ $image_url }}" alt="{{ get_the_title($post->ID) }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
 					<a href="{{ get_permalink($post->ID) }}" class="absolute inset-0 z-30" aria-label="{{ get_the_title($post->ID) }}"></a>

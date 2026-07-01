@@ -9,17 +9,17 @@
 	])>
 
 	<div class="__wrapper c-main">
-		<div class="grid grid-cols-1 lg:grid-cols-2 items-start gap-14  z-10 relative">
+		<div class="grid grid-cols-1 lg:grid-cols-2 items-start gap-4 md:gap-14  z-10 relative">
 			<div class="__content py-0 lg:sticky lg:top-36 flex flex-col-reverse lg:flex-col justify-center">
 				<div class="">
 					@if (!empty($g_partnership['title']))
-					<span class="text-lg uppercase text-secondary ">
+					<span data-gsap-element="header" class="text-lg uppercase text-secondary ">
 						{{ $g_partnership['title'] }}
 					</span>
 					@endif
 
 					@if (!empty($g_partnership['header']))
-					<h2 data-gsap-element="title" class="my-6">
+					<h2 data-gsap-element="header" class="my-6">
 						{{ $g_partnership['header'] }}
 					</h2>
 					@endif
@@ -30,7 +30,7 @@
 					@endif
 				</div>
 				@if(!empty($g_partnership['image']['url']))
-				<div class="w-full mb-10 lg:mb-0">
+				<div data-gsap-element="img" class="w-full mb-10 lg:mb-0">
 					<img class="object-cover w-full h-full max-h-[288px] lg:max-h-[600px]  radius" src="{{ $g_partnership['image']['url'] }}" alt="{{ $g_partnership['image']['alt'] ?? '' }}" loading="lazy">
 				</div>
 				@endif

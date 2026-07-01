@@ -26,31 +26,36 @@ $sectionClass .= $flip ? ' order-flip' : '';
 $unique_id = 'clip_'.uniqid();
 @endphp
 
-<div class="hero category-header relative">
+<div data-gsap-anim="section" class="hero category-header relative">
 	<div class="absolute z-4 right_shape hidden xl:block right-25 -top-14 xl:h-[600px]  w-auto">
-		<img class="w-full h-full" src="/wp-content/uploads/2026/06/hero_blog.svg">
+		<img data-gsap-element="img" class="w-full h-full" src="/wp-content/uploads/2026/06/hero_blog.svg">
 	</div>
 	<div class="__wrapper c-main relative z-10 lg:pt-20 ">
 		<div class="__content w-full md:w-2/3">
-			<h2 class="text-primary-900 -spt  -spb">
+			<h2 data-gsap-element="header" class="text-primary-900 -spt  -spb">
 				Wiedza, inspiracje i kulisy produkcji audio
 			</h2>
 		</div>
 
-		<div id="category-tabs" class="category-tabs z-20 relative rounded-full">
 			<div id="category-tabs" class="category-tabs z-20 relative rounded-full">
 				<div class="lg:flex  ">
 					<div class="lg:w-fit flex flex-wrap  gap-3">
 						<div class=" !w-auto">
-							<a href="/category/blog" class="__tab block bg-primary-100 rounded-full px-6 py-4 {{ is_category('blog') ? 'active' : '' }}">Wszystkie wpisy</a>
+						<a data-gsap-element="card" href="{{ get_category_link(get_category_by_slug('baza-wiedzy')->term_id) }}"
+   class="__tab block bg-primary-100 rounded-full px-6 py-4 {{ is_category('baza-wiedzy') ? 'active' : '' }}">
+    Wszystkie wpisy
+</a>
 						</div>
 						@foreach($categories as $category)
-						@if($category->name !== 'Blog')
-						<div class="!w-auto">
-							<a href="{{ get_category_link($category->term_id) }}" class="__tab block bg-primary-100 rounded-full px-6 py-4 {{ $term && $term->term_id === $category->term_id ? 'active' : 'bg-primary' }}">{{ $category->name }}</a>
-						</div>
-						@endif
-						@endforeach
+    @if($category->slug !== 'baza-wiedzy')
+        <div class="!w-auto">
+            <a data-gsap-element="card" href="{{ get_category_link($category->term_id) }}"
+               class="__tab block bg-primary-100 rounded-full px-6 py-4 {{ $term && $term->term_id === $category->term_id ? 'active' : '' }}">
+                {{ $category->name }}
+            </a>
+        </div>
+    @endif
+@endforeach
 					</div>
 				</div>
 			</div>

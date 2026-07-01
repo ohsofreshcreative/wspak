@@ -10,7 +10,7 @@
 	<div class="c-main !overflow-visible">
 		<div class="__content mb-12 flex justify-between items-center">
 			<div>
-				<h2 data-gsap-element="title" class=" ">{{ $posts_settings['title'] }}</h2>
+				<h2 data-gsap-element="header" class=" ">{{ $posts_settings['title'] }}</h2>
 			</div>
 			<div class="flex items-center gap-6">
 				<div class="flex md:gap-4 gap-2">
@@ -29,10 +29,9 @@
 					$image_url = $thumbnail_id ? wp_get_attachment_image_url($thumbnail_id, 'large') : null;
 					$icon_id = get_field('offer_icon', $post->ID);
 					@endphp
-					<div class="swiper-slide group relative bg-white p-6 radius flex flex-col w-full min-h-[500px] md:min-h-[600px] transform transition-all duration-300 transition-opacity delay-75 overflow-hidden"
+					<div data-gsap-element="card" class="swiper-slide group relative bg-white p-6 radius flex flex-col w-full min-h-[500px] md:min-h-[600px] transform transition-all duration-300 transition-opacity delay-75 overflow-hidden"
 						style="@if($image_url) background-image: url('{!! $image_url !!}'); background-size: cover; background-position: center; @endif">
-								<div class="absolute inset-0 bg-vertical opacity-50 z-10"></div>
-
+						<div class="absolute inset-0 bg-vertical opacity-50 z-10"></div>
 						@if(!empty($icon_id))
 						<div class="w-full h-auto flex justify-end relative z-20 mb-6 ml-auto">
 							{!! wp_get_attachment_image($icon_id, 'thumbnail', false, ['class' => 'w-10 h-auto object-contain ml-auto text-right']) !!}

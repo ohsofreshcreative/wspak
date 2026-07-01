@@ -1,9 +1,9 @@
 <article class="{{ implode(' ', get_post_class('__card')) }}">
 
-	<a class="rounded-2xl h-full" href="{{ get_permalink() }}">
+	<a data-gsap-element="card"  class="rounded-2xl h-full" href="{{ get_permalink() }}">
 		<div class="__content relative  rounded-2xl p-6 h-full">
 			@if (has_post_thumbnail())
-			<div class="block rounded-2xl overflow-hidden">
+			<div data-gsap-element="img" class="block rounded-2xl overflow-hidden">
 				<img src="{{ get_the_post_thumbnail_url(null, 'large') }}" alt="{{ get_the_title() }}" class="w-full img-s object-cover">
 			</div>
 			@endif
@@ -14,7 +14,7 @@
 				$cat_name = '';
 				if (!empty($categories)) {
 				foreach ($categories as $category) {
-				if (mb_strtolower($category->name) === 'blog') {
+				if (mb_strtolower($category->name) === 'baza wiedzy') {
 				continue;
 				}
 				$cat_name = $category->name;

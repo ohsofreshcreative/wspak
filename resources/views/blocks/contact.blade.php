@@ -18,14 +18,14 @@
 				@if(!empty($g_contact_1['header']))
 				<h3 data-gsap-element="header" class="m-header">{!! $g_contact_1['header'] !!}</h3>
 				@endif
-				<div class="grid grid-cols-2 !items-start">
+				<div class="grid grid-cols-1 md:grid-cols-2 !items-start">
 					<div class="">
 						@if(!empty($g_contact_1['phone']))
 						<a data-gsap-element="txt" class="__phone flex items-center mb-2" href="tel:{{ $g_contact_1['phone'] }}">{{ $g_contact_1['phone'] }}</a>
 						@endif
 
 						@if(!empty($g_contact_1['phone2']))
-						<a data-gsap-element="txt" class="__phone flex items-center" href="tel:{{ $g_contact_1['phone2'] }}">{{ $g_contact_1['phone2'] }}</a>
+						<a data-gsap-element="txt" class="__phone flex items-center mb-2 md:mb-0" href="tel:{{ $g_contact_1['phone2'] }}">{{ $g_contact_1['phone2'] }}</a>
 						@endif
 					</div>
 					@if(!empty($g_contact_1['mail']))

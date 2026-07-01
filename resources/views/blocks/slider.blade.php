@@ -18,7 +18,7 @@ $sectionClass .= ' ' . $background;
 	<div class="absolute z-4 right_shape"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape_s.svg"></div>
 	<div class="__wrapper c-main block relative z-20 text-center">
 		@if(!empty($g_slider['title']))
-		<h2 class="text-center !text-white m-header">{{ $g_slider['title']}}</h2>
+		<h2 data-gsap-element="header" class="text-center !text-white m-header">{{ $g_slider['title']}}</h2>
 		@endif
 		@if(!empty($g_slider['text']))
 		<div data-gsap-element="txt" class="__txt text-white max-w-2xl mx-auto mb-14 text-lg">

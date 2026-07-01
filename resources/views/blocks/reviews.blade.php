@@ -33,7 +33,7 @@
 					<div class="swiper-wrapper flex">
 						@foreach($r_reviews as $card)
 						<div class="swiper-slide w-full! md:w-[calc(100%/1.5)]! max-w-[calc(100%/1.5)]! md:px-14!">
-							<div class="__card relative  py-14">
+							<div data-gsap-element="card" class="__card relative  md:py-14">
 								<div class="relative z-10 flex flex-col ">
 									@if(!empty($card['txt']))
 									<div class="review-content-wrapper text-white">

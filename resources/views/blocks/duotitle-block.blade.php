@@ -17,7 +17,7 @@
 						style="background-image: url('{{ get_template_directory_uri() }}/resources/images/shape_s.svg'); background-repeat: no-repeat; background-position: left bottom; background-size: cover; background-size: 130% auto; mix-blend-mode: overlay; opacity: 0.2;">
 					</div>
 					<div class="relative z-10">
-						<span class="mb-2 block text-h2 !text-white ">
+						<span data-gsap-element="txt" class="mb-2 block text-h2 !text-white ">
 							{{ $g_duotitle['title_number'] }}
 						</span>
 						<div data-gsap-element="txt" class="__txt">

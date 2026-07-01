@@ -22,59 +22,59 @@ $category = !empty($categories) ? $categories[0] : null;
 	</div>
 </section>
 
-<section data-gsap-anim="section ">
+<section data-gsap-anim="section">
 	<div id="tresc" class="__entry relative z-10 -mt-16">
 		<div class="c-main grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 ">
 
 			@if(has_post_thumbnail())
-			<div data-gsap-element="image" class="w-full img-2xl radius overflow-hidden ">
+			<div data-gsap-element="img" class="w-full img-2xl radius overflow-hidden ">
 				{!! get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'w-full object-cover']) !!}
 			</div>
 			@endif
-@php
-$cta = get_field('cta_box');
-@endphp
-@if(!empty($cta['show']))
-<div class="_box mt-auto relative h-[320px] lg:h-[390px] w-full radius overflow-hidden flex flex-col justify-end">
+			@php
+			$cta = get_field('cta_box');
+			@endphp
+			@if(!empty($cta['show']))
+			<div data-gsap-element="card" class="_box mt-auto relative h-[320px] lg:h-[390px] w-full radius overflow-hidden flex flex-col justify-end">
 
-    <div class="absolute inset-0 z-1 pointer-events-none radius">
+				<div class="absolute inset-0 z-1 pointer-events-none radius">
 
-        @if(!empty($cta['image']))
-            {!! wp_get_attachment_image(
-                $cta['image'],
-                'large',
-                false,
-                ['class' => 'w-full h-full object-cover radius']
-            ) !!}
-        @endif
+					@if(!empty($cta['image']))
+					{!! wp_get_attachment_image(
+					$cta['image'],
+					'large',
+					false,
+					['class' => 'w-full h-full object-cover radius']
+					) !!}
+					@endif
 
-        <div class="absolute inset-0 opacity-80"
-             style="background: linear-gradient(0deg, #123071 5%, #E65796 93%);">
-        </div>
+					<div class="absolute inset-0 opacity-80"
+						style="background: linear-gradient(0deg, #123071 5%, #E65796 93%);">
+					</div>
 
-    </div>
+				</div>
 
-    <div class="_content z-20 relative mt-auto p-8">
+				<div class="_content z-20 relative mt-auto p-8">
 
-        @if(!empty($cta['title']))
-            <h5 class="text-white mb-3">
-                {{ $cta['title'] }}
-            </h5>
-        @endif
+					@if(!empty($cta['title']))
+					<h5 class="text-white mb-3">
+						{{ $cta['title'] }}
+					</h5>
+					@endif
 
-        @if(!empty($cta['button']))
-            <a
-                href="{{ $cta['button']['url'] }}"
-                target="{{ $cta['button']['target'] }}"
-                class="btn btn-secondary">
-                {{ $cta['button']['title'] }}
-            </a>
-        @endif
+					@if(!empty($cta['button']))
+					<a
+						href="{{ $cta['button']['url'] }}"
+						target="{{ $cta['button']['target'] }}"
+						class="btn btn-secondary">
+						{{ $cta['button']['title'] }}
+					</a>
+					@endif
 
-    </div>
+				</div>
 
-</div>
-@endif
+			</div>
+			@endif
 
 
 		</div>
@@ -87,37 +87,40 @@ $content = apply_filters('the_content', get_the_content());
 
 preg_match_all('/<h([1-4])[^>]*>(.*?)<\/h[1-4]>/', $content, $matches, PREG_SET_ORDER);
 
-		$toc = '<nav class="toc">
-			<ul>';
-				$used_ids = [];
-				foreach ($matches as $match) {
+$toc = '<nav class="toc">
+	<ul>';
+		$used_ids = [];
+		if (!empty($matches) && is_array($matches)) {
+			foreach ($matches as $match) {
 				$level = $match[1];
 				$title = strip_tags($match[2]);
 				$id = sanitize_title($title);
 				$base_id = $id;
 				$i = 2;
 				while (in_array($id, $used_ids)) {
-				$id = $base_id . '-' . $i;
-				$i++;
+					$id = $base_id . '-' . $i;
+					$i++;
 				}
 				$used_ids[] = $id;
 				$content = preg_replace(
-				'/<h' . $level . '[^>]*>' . preg_quote($match[2], '/' ) . '<\/h' . $level . '>/' , '<h' . $level . ' id="' . $id . '">' . $match[2] . '</h' . $level . '>' ,
+					'/<h' . $level . '[^>]*>' . preg_quote($match[2], '/') . '<\/h' . $level . '>/',
+					'<h' . $level . ' id="' . $id . '">' . $match[2] . '</h' . $level . '>',
 					$content,
 					1
-					);
-					$toc .='<li class="toc-h' . $level . '"><a href="#' . $id . '">' . $title . '</a></li>' ;
-					}
-					$toc .='</ul></nav>' ;
-					@endphp
+				);
+				$toc .= '<li class="toc-h' . $level . '"><a href="#' . $id . '">' . $title . '</a></li>';
+			}
+		}
+		$toc .= '</ul></nav>';
+@endphp
 
-					<div class="__content c-main __entry -smt grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10">
-<div id="tresc" class="__entry">
+					<div data-gsap-anim="section" class="__content c-main __entry -smt grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10">
+					<div data-gsap-element="txt" id="tresc" class="__entry">
 						{!! $content !!}
 					</div>
 					<div class="relative md:sticky top-0 md:top-30 h-max">
-						<p class="text-h5 m-title">Co znajdziesz w artykule:</p>
-						@if(count($matches))
+						<p data-gsap-element="txt" class="text-h5 m-title">Co znajdziesz w artykule:</p>
+						@if(!empty($matches) && is_array($matches) && count($matches) > 0)
 						{!! $toc !!}
 						@endif
 					</div>
@@ -137,58 +140,57 @@ preg_match_all('/<h([1-4])[^>]*>(.*?)<\/h[1-4]>/', $content, $matches, PREG_SET_
 
 
 					@if($related_query->have_posts())
-					<section class="bg-white related-posts  -smt pt-20 pb-26">
-					<div class="c-main">
+					<section data-gsap-anim="section" class="bg-white related-posts  -smt pt-20 pb-26">
+						<div class="c-main">
 
-						<div class="__content flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12">
-							<h2 class="">Baza wiedzy</h2>
-							<a href="/category/blog" class="self-start inline-flex items-center gap-3 !text-primary-100 border-2 border-primary-100 rounded-full py-4 px-14 hover:bg-[#2563eb]/5 transition-all duration-300">
-								<span> Zobacz wszystkie wpisy</span>
-								<img class="strzałka" src="{{ get_template_directory_uri() }}/resources/images/__arrow.svg">
-							</a>
-						</div>
+							<div class="__content flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12">
+								<h2 data-gsap-element="header" class="">Baza wiedzy</h2>
+								<a data-gsap-element="btn" href="/category/baza-wiedzy" class="self-start inline-flex items-center gap-3 !text-primary-100 border-2 border-primary-100 rounded-full py-4 px-14 hover:bg-[#2563eb]/5 transition-all duration-300">
+									<span> Zobacz wszystkie wpisy</span>
+									<img class="strzałka" src="{{ get_template_directory_uri() }}/resources/images/__arrow.svg">
+								</a>
+							</div>
 
-						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 gap-4">
-							@while($related_query->have_posts())
-							@php($related_query->the_post())
-							<article @php(post_class('bg-white radius p-6 flex flex-col'))>
-								<header>
-									@if(has_post_thumbnail())
-									<a href="{{ get_permalink() }}">
-										{!! get_the_post_thumbnail(null, 'large', ['class' => 'featured-image radius object-cover img-m']) !!}
-									</a>
-									@endif
-
-									@php($post_categories = get_the_category(get_the_ID()))
-									@if(!empty($post_categories))
-									<div class="flex flex-wrap gap-2 mt-4">
-										@foreach($post_categories as $post_category)
-										{{-- Jeśli to kategoria "Blog", przeskocz do następnej --}}
-										@if(mb_strtolower($post_category->name) === 'blog')
-										@continue
+							<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 gap-4">
+								@while($related_query->have_posts())
+								@php($related_query->the_post())
+								<article data-gsap-element="card" @php(post_class('bg-white radius p-6 flex flex-col'))>
+									<header>
+										@if(has_post_thumbnail())
+										<a href="{{ get_permalink() }}">
+											{!! get_the_post_thumbnail(null, 'large', ['class' => 'featured-image radius object-cover img-m']) !!}
+										</a>
 										@endif
 
-										<a href="{{ get_category_link($post_category->term_id) }}" class="bg-primary-lighter hover:bg-primary-light  radius text-xs p-2">{{ $post_category->name }}</a>
-										@endforeach
-									</div>
-									@endif
+										@php($post_categories = get_the_category(get_the_ID()))
+										@if(!empty($post_categories))
+										<div class="flex flex-wrap gap-2 mt-4">
+											@foreach($post_categories as $post_category)
+											@if($post_category->slug === 'baza-wiedzy')
+											@continue
+											@endif
 
-									<h2 class="entry-title text-h6 mt-4 ">
-										<a class="!text-primary-900" href="{{ get_permalink() }}">
-											{{ get_the_title() }}
-										</a>
-									</h2>
+											<a href="{{ get_category_link($post_category->term_id) }}" class="bg-primary-lighter hover:bg-primary-light  radius text-xs p-2">{{ $post_category->name }}</a>
+											@endforeach
+										</div>
+										@endif
 
-								</header>
+										<h2 class="entry-title text-h6 mt-4 ">
+											<a class="!text-primary-900" href="{{ get_permalink() }}">
+												{{ get_the_title() }}
+											</a>
+										</h2>
 
-								<a class=" mt-auto pt-4" href="{{ get_permalink() }}">
-                        	<x-icon.arrow-right class="cursor-pointer h-10 w-auto" />
-								</a>
+									</header>
 
-							</article>
-							@endwhile
-							@php(wp_reset_postdata())
-						</div>
+									<a class=" mt-auto pt-4" href="{{ get_permalink() }}">
+										<x-icon.arrow-right class="cursor-pointer h-10 w-auto" />
+									</a>
+
+								</article>
+								@endwhile
+								@php(wp_reset_postdata())
+							</div>
 						</div>
 					</section>
 					@endif

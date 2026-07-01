@@ -17,7 +17,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 				{{ $posts_settings['title'] ?? 'Baza wiedzy' }}
 			</h2>
 			@if (!empty($posts_settings['button']))
-			<a data-gsap-element="btn" class="self-start inline-flex items-center gap-3 !text-primary-100 border-2 border-primary-100 rounded-full py-4 px-14 hover:bg-[#2563eb]/5 transition-all duration-300" href="{{ home_url('/category/blog/') }}">
+			<a data-gsap-element="btn" class="self-start inline-flex items-center gap-3 !text-primary-100 border-2 border-primary-100 rounded-full py-4 px-14 hover:bg-[#2563eb]/5 transition-all duration-300" href="{{ home_url('/category/baza-wiedzy') }}">
 				<span class=" !font-medium ">{{ $posts_settings['button']['title'] }}</span>
 				<img class="strzałka" src="{{ get_template_directory_uri() }}/resources/images/__arrow.svg">
 			</a>
@@ -27,7 +27,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 			@if(!empty($posts))
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				@foreach($posts as $post)
-				<div class="group relative flex flex-col text-left h-full transition-all duration-300">
+				<div data-gsap-element="card" class="group relative flex flex-col text-left h-full transition-all duration-300">
 					<div class="w-full aspect-[16/9] mb-5 overflow-hidden radius ">
 						@if(has_post_thumbnail($post->ID))
 						<img src="{{ get_the_post_thumbnail_url($post->ID, 'large') }}"
@@ -41,7 +41,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 						$cat_name = '';
 						if (!empty($categories)) {
 						foreach ($categories as $category) {
-						if (mb_strtolower($category->name) === 'blog') {
+						if (mb_strtolower($category->name) === 'baza wiedzy') {
 						continue;
 						}
 						$cat_name = $category->name;

@@ -29,7 +29,7 @@
 				'style' => 'Styl interpretacji',
 				];
 				@endphp
-				<div class="voices-filters flex flex-col gap-6">
+				<div data-gsap-element="card" class="voices-filters flex flex-col gap-6">
 					@foreach ($filterLabels as $key => $label)
 					@if (!empty($filters[$key]))
 					<div class="filter-group border-b border-secondary pb-4" data-filter-group="{{ $key }}">
@@ -53,10 +53,10 @@
 			</div>
 
 			{{-- KAFELKI - prawa strona--}}
-			<div class="col-span-1 md:col-span-3 flex flex-col gap-10">
+			<div data-gsap-element="grid-layout" class="col-span-1 md:col-span-3 flex flex-col gap-10">
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start ">
 					@foreach ($voices as $voice)
-					<div class="voice-card p-4 bg-white radius"
+					<div data-gsap-element="card" class="voice-card p-4 bg-white radius"
 						data-gender="{{ Str::slug($voice['gender'] ?? '') }}"
 						data-age="{{ Str::slug($voice['age'] ?? '') }}"
 						data-timbre="{{ Str::slug($voice['timbre'] ?? '') }}"
@@ -83,7 +83,7 @@
 							<img
 								src="{{ $voice['avatar'] }}"
 								alt="{{ $voice['name'] ?? '' }}"
-								class="w-19 h-19 rounded-full object-cover flex-shrink-0 ml-4">
+								data-gsap-element="img" class="w-19 h-19 rounded-full object-cover flex-shrink-0 ml-4">
 							@endif
 						</div>
 
