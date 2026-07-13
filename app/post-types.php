@@ -109,6 +109,37 @@ add_action('init', function () {
     ]);
 });
 
+/*--- CPT - Materiały ---*/
+
+add_action('init', function () {
+    register_post_type('materials', [
+        'label'         => 'Materiały',
+        'labels'        => [
+            'name'               => 'Materiały',
+            'singular_name'      => 'material',
+            'menu_name'          => 'Materiały',
+            'name_admin_bar'     => 'material',
+            'add_new'            => 'Dodaj nowy',
+            'add_new_item'       => 'Dodaj nowy materiał',
+            'new_item'           => 'Nowy materiał',
+            'edit_item'          => 'Edytuj materiał',
+            'view_item'          => 'Zobacz materiał',
+            'all_items'          => 'Wszystkie materiały',
+            'search_items'       => 'Szukaj materiałów',
+            'parent_item_colon'  => 'Rodzic:',
+            'not_found'          => 'Nie znaleziono materiałów.',
+            'not_found_in_trash' => 'Brak materiałów w koszu.'
+        ],
+        'public'        => true,
+        'has_archive'   => true,
+        'menu_icon'     => 'dashicons-portfolio',
+        'menu_position' => 20,
+        'supports'      => ['title', 'editor', 'thumbnail', 'excerpt'],
+        'show_in_rest'  => true,
+        'rewrite'       => ['slug' => 'materialy', 'with_front' => false],
+    ]); 
+});
+
 /*--- REJESTRACJA POLA DLA IKONY W PRAWYM PANELU BOCZNYM ---*/
 add_action('acf/init', function() {
     $offer_side_fields = new \StoutLogic\AcfBuilder\FieldsBuilder('oferta_panel_boczny', [
