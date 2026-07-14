@@ -11,7 +11,7 @@ export default defineConfig(({ command, mode }) => {
   return {
     server: {
       host: 'wspak.local',
-      port: 5981,
+      port: 5982,
       strictPort: true,
       cors: true,
       proxy: {
@@ -23,7 +23,7 @@ export default defineConfig(({ command, mode }) => {
       hmr: {
         protocol: 'ws',
         host: 'wspak.local',
-        port: 5981,
+        port: 5982,
       },
     },
 

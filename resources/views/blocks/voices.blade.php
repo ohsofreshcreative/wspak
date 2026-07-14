@@ -1,3 +1,5 @@
+<!---- voices ---->
+
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
@@ -115,7 +117,7 @@
 						</span>
 
 						{{-- Audio --}}
-						<div class="voice-audio-tracks flex flex-wrap gap-4 items-center mb-4">
+						<div class="voice-audio-tracks flex flex-wrap gap-1 items-center mb-4">
 							@if(!empty($voice['audio_tracks']))
 							@foreach($voice['audio_tracks'] as $track)
 							@if(!empty($track['file']))
