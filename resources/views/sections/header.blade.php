@@ -20,7 +20,7 @@ $social_media = get_field('social_media', 'option');
         <nav class="ml-6 lg:ml-15 nav-primary w-full" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
             {!! wp_nav_menu([
             'theme_location' => 'primary_navigation',
-            'menu_class' => 'nav flex gap-x-3 lg:gap-x-6 text-lg font-medium justify-center items-center',
+            'menu_class' => 'nav flex gap-x-3 lg:gap-x-6 font-medium justify-center items-center',
             'container' => false,
             'echo' => false,
             'walker' => new DropdownWalker(),

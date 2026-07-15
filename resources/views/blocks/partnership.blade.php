@@ -37,27 +37,34 @@
 			</div>
 
 			<!-- prawa strona  -->
-			<div class=" w-full z-10 relative flex flex-col gap-0">
+			<div class=" w-full z-10 relative flex flex-col gap-0 __timeline-container">
+				<!-- Tło szyny linii (widoczne zawsze) -->
+				<div class="__timeline-track absolute left-0 w-12 flex justify-center pointer-events-none" style="top: 30px; height: calc(100% - 60px);">
+					<div class="w-px bg-secondary/20 h-full"></div>
+				</div>
+				<!-- Rysująca się linia postępu -->
+				<div class="__timeline-progress-track absolute left-0 w-12 flex justify-center pointer-events-none" style="top: 30px; height: calc(100% - 60px);">
+					<div class="__timeline-progress-bar w-[1.5px] bg-secondary h-full origin-top scale-y-0"></div>
+				</div>
+
 				@if(!empty($r_partnership))
 				@foreach($r_partnership as $index => $card)
 				<div data-gsap-element="stagger" class="__timeline-row flex gap-6 md:gap-8 items-start relative pb-8 last:pb-0">
 					<div class="flex flex-col items-center h-full absolute top-0 bottom-0 left-0 w-12">
-						<div class="__timeline-line absolute top-4 bottom-0 w-[1px] bg-secondary "></div>
-
-						<div class=" w-15 h-15 rounded-full flex items-center justify-center p-2 relative z-10 shrink-0 border 
-    {{ $loop->first ? 'bg-secondary border-secondary text-white' : 'bg-white border-secondary text-secondary' }}">
+						<div class="__timeline-circle w-15 h-15 rounded-full flex items-center justify-center p-2 relative z-10 shrink-0 border transition-all duration-300
+    {{ $loop->first ? 'bg-secondary border-secondary text-white is-active' : 'bg-white border-secondary text-secondary' }}">
 							@if(!empty($card['card_image']))
 							<img src="{{ $card['card_image']['url'] }}" alt="ikona" class="__img w-7 h-7 object-contain">
 							@endif
 						</div>
 					</div>
-					<div class="flex-grow ml-30 p-8 border border-primary-100 radius flex flex-col justify-center min-h-[218px] ">
+					<div class="grow ml-30 p-8 border border-primary-100 radius flex flex-col justify-center min-h-[218px] ">
 						@if(!empty($card['card_text_top']))
 						<span class="text-h7 font-bold text-secondary uppercase mb-8">
 							{{ $card['card_text_top'] }}
 						</span>
 						@endif
-						<h4 class="text-primary-900 mb-4 text-h6 !font-normal">
+						<h4 class="text-primary-900 mb-4 text-h6 font-normal!">
 							{{ $card['card_title'] }}
 						</h4>
 						@if(!empty($card['card_text']))

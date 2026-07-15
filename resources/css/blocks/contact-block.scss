@@ -20,6 +20,12 @@
 		height: 1389px;
 	}
 
+	 .right_shape {
+        animation: floatShape 100s linear infinite;
+        transform-origin: center center;
+        will-change: transform;
+    }
+
 	.__data {
 		font-size: 16px;
 	}
@@ -57,4 +63,22 @@
 	}
 
 
+}
+
+@keyframes floatShape {
+    0% {
+        transform: rotate(-25deg) scale(1) translate(0, 0);
+    }
+    25% {
+        transform: rotate(65deg) scale(1.2) translate(20px, -20px);
+    }
+    50% {
+        transform: rotate(155deg) scale(0.8) translate(-15px, 25px); 
+    }
+    75% {
+        transform: rotate(245deg) scale(1.2) translate(20px, 15px); 
+    }
+    100% {
+        transform: rotate(335deg) scale(1) translate(0, 0);
+    }
 }

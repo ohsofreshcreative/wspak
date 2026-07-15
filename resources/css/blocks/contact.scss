@@ -20,6 +20,15 @@
 		height: 1389px;
 	}
 
+	   .right_shape {
+        animation: floatShape 100s linear infinite;
+        transform-origin: center center; 
+        will-change: transform;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 	.__data {
 		font-size: 16px;
 	}
@@ -60,4 +69,22 @@
 		border-bottom: 1px solid var(--text-s-secondary);
 	}
 
+}
+
+@keyframes floatShape {
+    0% {
+        transform: rotate(-25deg) scale(1.0);
+    }
+    25% {
+        transform: rotate(65deg) scale(1.25);
+    }
+    50% {
+        transform: rotate(155deg) scale(0.8);
+    }
+    75% {
+        transform: rotate(245deg) scale(1.25);
+    }
+    100% {
+        transform: rotate(335deg) scale(1.0);
+    }
 }

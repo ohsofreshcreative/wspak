@@ -1,4 +1,5 @@
 <!-- overview  -->
+
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
@@ -10,7 +11,7 @@
 	<div class="c-main grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-12 items-end ">
 		<div class="flex flex-col order-2 lg:order-none">
 			@if(!empty($g_overview['title_sub']))
-			<span data-gsap-element="header" class="block text-sm md:text-base text-secondary-500 m-title">
+			<span data-gsap-element="header" class="__title block m-title">
 				{{ $g_overview['title_sub'] }}
 			</span>
 			@endif

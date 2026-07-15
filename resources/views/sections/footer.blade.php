@@ -3,13 +3,13 @@ $contact = get_field('g_contact_info', 'option');
 $socials = get_field('social_media', 'option');
 @endphp
 
-<footer class="footer overflow-hidden text-white relative z-10">
-    <div class="blur bg-primary-100 absolute"></div>
-    <div class="absolute shape z-20 w-[1000px] h-[1000px] top-24 right-[-750px] hidden lg:block">
+<footer data-gsap-anim="section" class="footer overflow-hidden text-white relative z-10">
+    <div data-gsap-element="img" class="blur bg-primary-100 absolute"></div>
+    <div data-gsap-element="img" class="absolute shape z-20 w-[1000px] h-[1000px] top-24 right-[-750px] hidden lg:block">
         <img class="w-full h-auto" src="{{ get_template_directory_uri() }}/resources/images/shape.svg">
     </div>
     <div class="__wrapper c-main relative z-10">
-        <div class="__widgets grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-10 lg:py-36">
+        <div data-gsap-element="widgets" class="__widgets grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-10 lg:py-36">
             <div class="flex flex-col gap-6">
                 @if(!empty($contact['image']))
                 <a href="{{ home_url('/') }}" class="inline-block">
@@ -19,19 +19,19 @@ $socials = get_field('social_media', 'option');
                 @if(!empty($contact))
                 <div class="flex flex-col gap-3">
                     @if(!empty($contact['phone']))
-                    <a href="tel:{!! str_replace(' ', '', $contact['phone']) !!}" class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
+                    <a href="tel:{!! str_replace(' ', '', $contact['phone']) !!}" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
                         <img src="{{ get_template_directory_uri() }}/resources/images/footer_phone.svg" alt="" class="w-6 h-6 shrink-0">
                         <span>{{ $contact['phone'] }}</span>
                     </a>
                     @endif
                     @if(!empty($contact['phone2']))
-                    <a href="tel:{!! str_replace(' ', '', $contact['phone2']) !!}" class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
+                    <a href="tel:{!! str_replace(' ', '', $contact['phone2']) !!}" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
                         <img src="{{ get_template_directory_uri() }}/resources/images/footer_phone.svg" alt="" class="w-6 h-6 shrink-0">
                         <span>{{ $contact['phone2'] }}</span>
                     </a>
                     @endif
                     @if(!empty($contact['mail']))
-                    <a href="mailto:{{ $contact['mail'] }}" class="flex items-center gap-3 text-sm hover:opacity-80 transition-opacity">
+                    <a href="mailto:{{ $contact['mail'] }}" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
                         <img src="{{ get_template_directory_uri() }}/resources/images/mail.svg" alt="" class="w-6 h-6 shrink-0">
                         <span>{{ $contact['mail'] }}</span>
                     </a>
@@ -63,8 +63,8 @@ $socials = get_field('social_media', 'option');
         </div>
     </div>
 
-    <div class="border-t border-primary-100"></div>
-    <div class="c-main flex flex-col md:flex-row lg:justify-center lg:items-center gap-6 py-10 footer-bottom">
+    <div class="border-t border-primary-400"></div>
+    <div data-gsap-element="info" class="c-main flex flex-col md:flex-row lg:justify-center lg:items-center gap-6 py-10 footer-bottom">
         @if(!empty($socials))
         <div class="hidden md:flex lg:items-center pr-8 border-r border-primary-100 gap-x-3 text-white">
             @include('partials.social-media', ['items' => $socials])

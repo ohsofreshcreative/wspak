@@ -28,7 +28,7 @@
 			</div>
 			@endif
 			<div class="__content order2">
-				<span data-gsap-element="txt" class="text-secondary mb-6 block text-lg">{{ $g_duotitle['header_small'] }}</span>
+				<span data-gsap-element="txt" class="__title block m-title">{{ $g_duotitle['header_small'] }}</span>
 				<h2 data-gsap-element="header" class="">{{ $g_duotitle['header'] }}</h2>
 
 				<div data-gsap-element="txt" class="__txt mt-4">

@@ -1,7 +1,7 @@
 <article class="{{ implode(' ', get_post_class('__card')) }}">
 
 	<a data-gsap-element="card"  class="rounded-2xl h-full" href="{{ get_permalink() }}">
-		<div class="__content relative  rounded-2xl p-6 h-full">
+		<div class="__content relative  rounded-2xl h-full">
 			@if (has_post_thumbnail())
 			<div data-gsap-element="img" class="block rounded-2xl overflow-hidden">
 				<img src="{{ get_the_post_thumbnail_url(null, 'large') }}" alt="{{ get_the_title() }}" class="w-full img-s object-cover">

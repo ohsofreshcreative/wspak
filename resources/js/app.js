@@ -13,7 +13,7 @@ import './menubar.js';
 import './footer-accordion.js';
 
 // Importujemy głosy OD RAZU. To zarejestruje 'audioPlayer' zanim wystartuje Alpine.
-import './blocks/voices.js'; 
+import './blocks/voices.js';
 
 /*--- USED ---*/
 
@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (document.querySelector('.b-category')) import('./blocks/category');
 	if (document.querySelector('.b-partners')) import('./blocks/partners');
 	if (document.querySelector('.b-logos')) import('./blocks/logos');
-	
+	if (document.querySelector('.b-partnership')) import('./blocks/partnership');
+
 
 });
 
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				ease: 'power2.out',
 				scrollTrigger: {
 					trigger: img,
-					start: 'top 90%',
+					start: 'top 95%',
 					toggleActions: 'play none none none',
 					once: true,
 				},
@@ -84,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				delay: index * 0.1,
 				scrollTrigger: {
 					trigger: element,
-					start: 'top 90%',
+					start: 'top 95%',
 					toggleActions: 'play none none none',
 					once: true,
 				},
@@ -116,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				stagger: { amount: 1.5, each: 0.1 },
 				scrollTrigger: {
 					trigger: section,
-					start: 'top 80%',
+					start: 'top 85%',
 					toggleActions: 'play none none none',
 					once: true,
 				},

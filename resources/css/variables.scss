@@ -87,6 +87,7 @@ body {
 	overflow-x: clip;
 	background-color: var(--bg);
 	color: rgb(var(--p-900));
+	font-size: clamp(16px, 1.2vw, 18px);
 }
 
 /*--- !ROOT ---*/
@@ -434,11 +435,7 @@ div,
 .__txt {
 	font-family: var(--txt);
 	font-weight: 300;
-	letter-spacing: 0.18px;
-}
-
-p {
-	font-size: 18px;
+	letter-spacing: 3%;
 }
 
 ul,
@@ -450,6 +447,11 @@ b,
 strong {
 	font-weight: 500;
 	color: var(--body);
+}
+
+.__title {
+	color:var(--color-secondary);
+	font-size: 18px;
 }
 
 .font-header {

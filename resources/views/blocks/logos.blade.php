@@ -15,7 +15,7 @@ $sectionClass .= ' ' . $background;
 		<h2 data-gsap-element="header" class="w-full mb-8 md:mb-12">{{ $g_logos['title'] }}</h2>
 	</div>
 	@if (!empty($g_logos['gallery']))
-	<div class="__logos mt-12 md:mt-16">
+	<div data-gsap-element="logos" class="__logos mt-10 md:mt-12">
 		<div class="__wrapper js-logo-slider">
 			@foreach ($g_logos['gallery'] as $image)
 			<div class="__slide border border-primary-100 radius bg-white flex items-center justify-center p-6 min-w-[300px] max-w-[300px] md:min-w-[320px] md:max-w-[320px] h-[152px] flex-shrink-0">

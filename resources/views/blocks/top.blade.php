@@ -8,8 +8,8 @@
 	$section_class => filled($section_class),
 	$background => filled($background) && $background !== 'none',
 	])>
-	<div class="absolute z-4 left_shape "><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
-	<div class="absolute z-4 right_shape "><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
+	<div class="absolute z-4 left_shape pointer-events-none"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
+	<div class="absolute z-4 right_shape pointer-events-none"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
 	<div class="__wrapper c-main relative z-5">
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-20">
 			@if (!empty($g_top['image']))

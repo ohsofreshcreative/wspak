@@ -1,4 +1,4 @@
-<!--- contact --->
+<!--- contact-block --->
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
@@ -9,7 +9,7 @@
 	])>
 	<div class="blur bg-primary-100 absolute"></div>
 	<div class="second_blur bg-primary-100 absolute"></div>
-	<div class="absolute right_shape z-10 block mix-blend-overlay w-[1300px] h-[1360px]  -top-10 md:-left-10 -left-6 rotate-[15deg]">
+	<div class="absolute right_shape z-10 block mix-blend-overlay w-[1300px] h-[1360px]  -top-10 md:-left-10 -left-6">
 		<img src="{{ get_template_directory_uri() }}/resources/images/shape_s.svg" alt="">
 	</div>
 	<div class="__wrapper c-main relative z-20">

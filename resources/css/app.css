@@ -224,6 +224,7 @@
 @import '../css/blocks/logos.scss';
 @import '../css/blocks/teaser.scss';
 @import '../css/blocks/voices.scss';
+@import '../css/blocks/partnership.scss';
 
 /*-- NOT USED ---*/
 @import '../css/blocks/accordion.scss';

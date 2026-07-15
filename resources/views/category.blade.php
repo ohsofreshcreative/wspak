@@ -30,46 +30,48 @@ $unique_id = 'clip_'.uniqid();
 	<div class="absolute z-0 right_shape hidden xl:block right-25 -top-14 xl:h-[600px]  w-auto">
 		<img data-gsap-element="img" class="w-full h-full" src="/wp-content/uploads/2026/06/hero_blog.svg">
 	</div>
-	<div class="__wrapper c-main relative z-10 lg:pt-20 ">
+	<div class="__wrapper c-main relative z-10 lg:pt-10">
 		<div class="__content w-full md:w-2/3">
-			<h2 data-gsap-element="header" class="text-primary-900 -spt  -spb">
+			<h2 data-gsap-element="header" class="text-primary-900 -spt mb-10">
 				Wiedza, inspiracje i kulisy produkcji audio
 			</h2>
 		</div>
 
-			<div id="category-tabs" class="category-tabs z-20 relative rounded-full">
-				<div class="lg:flex  ">
-					<div class="lg:w-fit flex flex-wrap  gap-3">
-						<div class=" !w-auto">
-						<a data-gsap-element="card" href="{{ get_category_link(get_category_by_slug('baza-wiedzy')->term_id) }}"
-   class="__tab block bg-primary-100 rounded-full px-6 py-4 {{ is_category('baza-wiedzy') ? 'active' : '' }}">
-    Wszystkie wpisy
-</a>
-						</div>
-						@foreach($categories as $category)
-    @if($category->slug !== 'baza-wiedzy')
-        <div class="!w-auto">
-            <a data-gsap-element="card" href="{{ get_category_link($category->term_id) }}"
-               class="__tab block bg-primary-100 rounded-full px-6 py-4 {{ $term && $term->term_id === $category->term_id ? 'active' : '' }}">
-                {{ $category->name }}
-            </a>
-        </div>
-    @endif
-@endforeach
+		<div id="category-tabs" class="category-tabs z-20 relative rounded-full">
+			<div class="lg:flex  ">
+				<div class="lg:w-fit flex flex-wrap  gap-3">
+					<div data-gsap-element="card" class=" !w-auto">
+						<a href="{{ get_category_link(get_category_by_slug('baza-wiedzy')->term_id) }}"
+							class="__tab block bg-primary-100 rounded-full px-6 py-4 {{ is_category('baza-wiedzy') ? 'active' : '' }}">
+							Wszystkie wpisy
+						</a>
 					</div>
+					@foreach($categories as $category)
+					@if($category->slug !== 'baza-wiedzy')
+					<div data-gsap-element="card" class="!w-auto">
+						<a href="{{ get_category_link($category->term_id) }}"
+							class="__tab block bg-primary-100 rounded-full px-6 py-4 {{ $term && $term->term_id === $category->term_id ? 'active' : '' }}">
+							{{ $category->name }}
+						</a>
+					</div>
+					@endif
+					@endforeach
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
+</div>
 
-@if (have_posts())
-<div class="__posts c-main !mt-10 posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-	@while (have_posts()) @php(the_post())
+<div data-gsap-anim="section">
+	@if (have_posts())
+	<div data-gsap-element="stagger" class="__posts c-main !mt-10 posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+		@while (have_posts()) @php(the_post())
 
-	@includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
-	@endwhile
+		@includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+		@endwhile
+	</div>
 </div>
 
 {{-- {!! get_the_posts_navigation() !!} --}}
@@ -84,7 +86,7 @@ $unique_id = 'clip_'.uniqid();
 @endif
 
 <!--- contact --->
-<section
+<div
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
 	@class([ 'b-contact-block bg-primary-900 text-white -spt -spb relative -smt overflow-hidden' ,
@@ -136,6 +138,6 @@ $unique_id = 'clip_'.uniqid();
 
 		</div>
 	</div>
-</section>
+</div>
 
 @endsection

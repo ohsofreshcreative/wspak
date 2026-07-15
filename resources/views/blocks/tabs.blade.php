@@ -20,13 +20,15 @@ $grouped_tabs[$tabName][] = $item;
 }
 @endphp
 
+<!--- tabs --->
+
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-tabs relative -smt {{ $sectionClass }} {{ $section_class }}">
 	<div class="__wrapper c-main relative">
 		@if (!empty($g_tabs['header']))
 		<div class=" text-center">
 			<h2 data-gsap-element="header" class="m-header">{{ $g_tabs['header'] }}</h2>
 			@if(!empty($g_tabs['text']))
-			<div class="__txt mt-4 max-w-3xl mx-auto">
+			<div data-gsap-element="text" class="__txt mt-4 max-w-3xl mx-auto">
 				{!! $g_tabs['text'] !!}
 			</div>
 			@endif
@@ -35,7 +37,7 @@ $grouped_tabs[$tabName][] = $item;
 
 		@if(!empty($grouped_tabs))
 		<div x-data="{ activeTab: 0 }" class="">
-			<div class="flex justify-center flex-wrap gap-4 m-header ">
+			<div data-gsap-element="buttons" class="flex justify-center flex-wrap gap-4 m-header ">
 				@foreach ($grouped_tabs as $name => $items)
 				<button
 					@click="activeTab = {{ $loop->index }}"
@@ -54,7 +56,7 @@ $grouped_tabs[$tabName][] = $item;
 					@foreach ($items as $item)
 					<div class="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-16 items-center">
 						@if(!empty($item['images']))
-						<div x-data="{ activeSlide: 0, totalSlides: {{ count($item['images']) }} }" class="relative w-full z-20">
+						<div data-gsap-element="gallery" x-data="{ activeSlide: 0, totalSlides: {{ count($item['images']) }} }" class="relative w-full z-20">
 							<div class="relative aspect-4/3 xl:aspect-auto xl:h-142 w-full radius overflow-hidden  z-10">
 								<div class="w-full h-full relative">
 									@foreach ($item['images'] as $imgIndex => $img)
@@ -87,11 +89,11 @@ $grouped_tabs[$tabName][] = $item;
 						@endif
 						<div class="__content flex flex-col justify-center">
 							@if (!empty($item['title']))
-							<h3 class="text-h2 m-header">{{ $item['title'] }}</h3>
+							<h3 data-gsap-element="header" class="text-h2 m-header">{{ $item['title'] }}</h3>
 							@endif
 
 							@if (!empty($item['text']))
-							<div class="__txt">
+							<div data-gsap-element="txt" class="__txt">
 								{!! $item['text'] !!}
 							</div>
 							@endif

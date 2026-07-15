@@ -12,14 +12,14 @@
 			<div>
 				<h2 data-gsap-element="header" class=" ">{{ $posts_settings['title'] }}</h2>
 			</div>
-			<div class="flex items-center gap-6">
+			<div data-gsap-element="arrows" class="flex items-center gap-6">
 				<div class="flex md:gap-4 gap-2">
 					<x-icon.arrow-left class="js-posts-prev cursor-pointer hover:opacity-30  md:h-16 h-10 w-auto duration-300 transition-all" />
 					<x-icon.arrow-right class="js-posts-next cursor-pointer hover:opacity-30  md:h-16 h-10 w-auto duration-300 transition-all" />
 				</div>
 			</div>
 		</div>
-		<div data-gsap-element="swiper" class="__posts-grid relative w-full !overflow-visible">
+		<div class="__posts-grid relative w-full !overflow-visible">
 			@if(!empty($posts))
 			<div class="swiper posts-slider !overflow-visible w-full">
 				<div class="swiper-wrapper !overflow-visible">
@@ -29,7 +29,8 @@
 					$image_url = $thumbnail_id ? wp_get_attachment_image_url($thumbnail_id, 'large') : null;
 					$icon_id = get_field('offer_icon', $post->ID);
 					@endphp
-					<div data-gsap-element="card" class="swiper-slide group relative bg-white radius overflow-hidden min-h-[400px] md:min-h-[500px] transform transition-all duration-300">
+				<div data-gsap-element="card" class="swiper-slide">
+					<div class="group relative bg-white radius overflow-hidden min-h-[400px] md:min-h-[500px] transform transition-all duration-300">
 
 						@if($image_url)
 						<div
@@ -66,6 +67,7 @@
 
 						<a href="{{ get_permalink($post->ID) }}" class="absolute inset-0 z-30 hidden-link" aria-label="{{ get_the_title($post->ID) }}"></a>
 
+					</div>
 					</div>
 					@endforeach
 				</div>

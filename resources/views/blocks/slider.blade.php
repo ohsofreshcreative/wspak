@@ -14,8 +14,8 @@ $sectionClass .= ' ' . $background;
 <!--- slider --->
 
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-slider bg-gradient-main relative overflow-hidden text-white -spt -spb {{ $sectionClass }} {{ $section_class }}">
-	<div class="absolute z-4 left_shape"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
-	<div class="absolute z-4 right_shape"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape_s.svg"></div>
+	<div data-gsap-element="img" class="absolute z-4 left_shape"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
+	<div data-gsap-element="img" class="absolute z-4 right_shape"><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape_s.svg"></div>
 	<div class="__wrapper c-main block relative z-20 text-center">
 		@if(!empty($g_slider['title']))
 		<h2 data-gsap-element="header" class="text-center !text-white m-header">{{ $g_slider['title']}}</h2>
@@ -26,7 +26,7 @@ $sectionClass .= ' ' . $background;
 		</div>
 		@endif
 	</div>
-	<div class="relative c-main">
+	<div data-gsap-element="slider" class="relative c-main z-20">
 		<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 pointer-events-none ">
 			<button class="js-slider-prev absolute left-2 top-1/2 -translate-y-1/2 pointer-events-auto opacity-100 hover:opacity-80 transition-opacity duration-300">
 				<x-icon.arrow-left class="cursor-pointer h-10 w-auto" />

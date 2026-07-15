@@ -154,7 +154,7 @@ $toc = '<nav class="toc">
 							<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 gap-4">
 								@while($related_query->have_posts())
 								@php($related_query->the_post())
-								<article data-gsap-element="card" @php(post_class('bg-white radius p-6 flex flex-col'))>
+								<article data-gsap-element="card" @php(post_class('flex flex-col'))>
 									<header>
 										@if(has_post_thumbnail())
 										<a href="{{ get_permalink() }}">
