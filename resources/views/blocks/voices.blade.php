@@ -31,17 +31,18 @@
 				'style' => 'Styl interpretacji',
 				];
 				@endphp
-				<div class="mb-6">
-				<p class="pb-2 !font-semibold">Wyszukaj lektora</p>
+				<div class=" mb-6">
+					<p class="pb-2 !font-semibold">Wyszukaj lektora</p>
 					<input
 						type="text"
 						id="voice-search"
-						class="w-full border !border-primary rounded-lg px-4 py-2">
+						placeholder="Wpisz imię i/lub nazwisko"
+						class="w-full border bg-white !border-secondary/50 rounded-lg px-4 py-2">
 				</div>
 				<div class="voices-filters flex flex-col gap-6">
 					@foreach ($filterLabels as $key => $label)
 					@if (!empty($filters[$key]))
-					<div class="filter-group border-b border-secondary pb-4" data-filter-group="{{ $key }}">
+					<div class="bg-white p-4 radius filter-group border-b border-secondary mb-4" data-filter-group="{{ $key }}">
 						<p class="filter-group__label !font-semibold pb-4">{{ $label }}</p>
 						<div class="flex gap-2 flex-col">
 							@foreach ($filters[$key] as $opt)
@@ -51,7 +52,7 @@
 									class="voice-filter"
 									data-filter="{{ $key }}"
 									value="{{ Str::slug($opt) }}">
-								<span class="text-lg font-medium">{{ $opt }}</span>
+								<span class="text-base font-medium">{{ $opt }}</span>
 							</label>
 							@endforeach
 						</div>
