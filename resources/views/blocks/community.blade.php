@@ -26,8 +26,31 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 					{!! $g_community['text'] !!}
 				</div>
 				<div class="_socials flex justify-center mt-6">
-					@include('partials.social-media', ['custom_color' => 'secondary'])
+					<div class="inline-buttons w-full sm:w-auto">
+						@if (!empty($g_community['button1']))
+						<x-button
+							:href="$g_community['button1']['url']"
+							variant="secondary"
+							class="!flex items-center justify-center gap-2"
+							data-gsap-element="btn">
+							<x-icon.facebook class="w-4 h-4" />
+							{{ $g_community['button1']['title'] }}
+						</x-button>
+						@endif
+						@if (!empty($g_community['button2']))
+						<x-button
+							:href="$g_community['button2']['url']"
+							variant="white"
+							class="!flex items-center justify-center gap-2"
+							data-gsap-element="btn">
+							<x-icon.instagram class="w-4 h-4" />
+							{{ $g_community['button2']['title'] }}
+						</x-button>
+						@endif
+					</div>
 				</div>
+
 			</div>
 		</div>
+	</div>
 </section>

@@ -16,7 +16,7 @@ $sectionClass .= ' ' . $background;
 	</div>
 	@if (!empty($g_logos['gallery']))
 	<div class="__logos mt-12 md:mt-16">
-		<div class="__wrapper ">
+		<div class="__wrapper js-logo-slider">
 			@foreach ($g_logos['gallery'] as $image)
 			<div class="__slide border border-primary-100 radius bg-white flex items-center justify-center p-6 min-w-[300px] max-w-[300px] md:min-w-[320px] md:max-w-[320px] h-[152px] flex-shrink-0">
 				<img src="{{ $image['url'] }}" alt="{{ $image['alt'] ?? '' }}" class="max-w-full max-h-full object-contain w-auto h-auto pointer-events-none select-none">
@@ -31,3 +31,4 @@ $sectionClass .= ' ' . $background;
 	</div>
 	@endif
 </section>
+

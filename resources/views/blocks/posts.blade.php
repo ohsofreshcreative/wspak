@@ -27,7 +27,7 @@ $sectionClass .= $brandbg ? ' section-brand' : '';
 			@if(!empty($posts))
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				@foreach($posts as $post)
-				<div data-gsap-element="card" class="group relative flex flex-col text-left h-full transition-all duration-300">
+				<div class="group relative flex flex-col text-left h-full transition-all duration-300">
 					<div class="w-full aspect-[16/9] mb-5 overflow-hidden radius ">
 						@if(has_post_thumbnail($post->ID))
 						<img src="{{ get_the_post_thumbnail_url($post->ID, 'large') }}"

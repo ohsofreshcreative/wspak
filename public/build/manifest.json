@@ -44,7 +44,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Cx9ecDx5.css",
+    "file": "assets/app-DBixnnXN.css",
     "name": "app",
     "names": [
       "app.css"
@@ -59,7 +59,7 @@
     ]
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-B7BkR20q.css",
+    "file": "assets/editor-CeA8XSCh.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -84,7 +84,7 @@
     "src": "resources/images/vector.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-BFh93X8O.js",
+    "file": "assets/app-zd_92yvp.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -93,11 +93,12 @@
       "resources/js/blocks/tabs.js",
       "resources/js/blocks/slider.js",
       "resources/js/blocks/category.js",
-      "resources/js/blocks/partners.js"
+      "resources/js/blocks/partners.js",
+      "resources/js/blocks/logos.js"
     ]
   },
   "resources/js/blocks/category.js": {
-    "file": "assets/category-CK_F3h8J.js",
+    "file": "assets/category-Txmq7IcG.js",
     "name": "category",
     "src": "resources/js/blocks/category.js",
     "isDynamicEntry": true,
@@ -106,6 +107,12 @@
       "_pagination-CPGgqmn-.js",
       "_swiper-BB-60MJI.js"
     ]
+  },
+  "resources/js/blocks/logos.js": {
+    "file": "assets/logos-lQpD5otL.js",
+    "name": "logos",
+    "src": "resources/js/blocks/logos.js",
+    "isDynamicEntry": true
   },
   "resources/js/blocks/partners.js": {
     "file": "assets/partners-DNEDJRSa.js",

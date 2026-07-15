@@ -15,7 +15,7 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 
 	<div class=" __wrapper relative">
 		<div class="__inside c-main relative">
-			<div class="__content py-20 grid grid-cols-1 md:grid-cols-2 c-main gap-6">
+			<div class="__content py-20 grid grid-cols-1 md:grid-cols-2 c-main gap-8">
 				<h1 data-gsap-element="header" class=" text-white mb-6 md:mb-0">
 					{!! $g_banner['header'] !!}
 				</h1>

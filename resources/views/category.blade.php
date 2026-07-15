@@ -27,7 +27,7 @@ $unique_id = 'clip_'.uniqid();
 @endphp
 
 <div data-gsap-anim="section" class="hero category-header relative">
-	<div class="absolute z-4 right_shape hidden xl:block right-25 -top-14 xl:h-[600px]  w-auto">
+	<div class="absolute z-0 right_shape hidden xl:block right-25 -top-14 xl:h-[600px]  w-auto">
 		<img data-gsap-element="img" class="w-full h-full" src="/wp-content/uploads/2026/06/hero_blog.svg">
 	</div>
 	<div class="__wrapper c-main relative z-10 lg:pt-20 ">

@@ -17,7 +17,7 @@ const initSlider = () => {
 
     new Swiper(slider, {
       modules: [Pagination, Navigation], // Dodano Navigation do modułów
-      loop: true,
+      loop: false,
       grabCursor: true,
       centeredSlides: false,
       slidesPerView: 1,

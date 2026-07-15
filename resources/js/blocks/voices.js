@@ -2,96 +2,120 @@ import Alpine from 'alpinejs';
 
 // --- 1. Kod do filtrowania lektorów ---
 document.addEventListener('DOMContentLoaded', () => {
-    const section = document.querySelector('.b-voices');
-    if (section) {
-        const checkboxes = section.querySelectorAll('.voice-filter');
-        const cards = section.querySelectorAll('.voice-card');
+	const section = document.querySelector('.b-voices');
 
-        function applyFilters() {
-            const active = {};
-            checkboxes.forEach(cb => {
-                if (cb.checked) {
-                    if (!active[cb.dataset.filter]) {
-                        active[cb.dataset.filter] = new Set();
-                    }
-                    active[cb.dataset.filter].add(cb.value);
-                }
-            });
+	if (section) {
+		const checkboxes = section.querySelectorAll('.voice-filter');
+		const cards = section.querySelectorAll('.voice-card');
+		const searchInput = section.querySelector('#voice-search');
 
-            const hasActiveFilters = Object.keys(active).some(key => active[key].size > 0);
+		function applyFilters() {
+			const active = {};
 
-            cards.forEach(card => {
-                if (!hasActiveFilters) {
-                    card.style.display = '';
-                    return;
-                }
+			const search = searchInput
+				? searchInput.value.trim().toLowerCase()
+				: '';
 
-                const isMatch = Object.entries(active).every(([key, values]) => {
-                    if (!values || values.size === 0) return true;
-                    const cardValues = (card.dataset[key] || '').split(',').map(v => v.trim());
-                    return cardValues.some(cardValue => values.has(cardValue));
-                });
+			checkboxes.forEach(cb => {
+				if (cb.checked) {
+					if (!active[cb.dataset.filter]) {
+						active[cb.dataset.filter] = new Set();
+					}
 
-                card.style.display = isMatch ? '' : 'none';
-            });
-        }
+					active[cb.dataset.filter].add(cb.value);
+				}
+			});
 
-        checkboxes.forEach(cb => cb.addEventListener('change', applyFilters));
-    }
+			const hasActiveFilters = Object.keys(active).some(
+				key => active[key].size > 0
+			);
+			cards.forEach(card => {
+				const isMatch = !hasActiveFilters || Object.entries(active).every(([key, values]) => {
+					if (!values || values.size === 0) return true;
+
+					const cardValues = (card.dataset[key] || '')
+						.split(',')
+						.map(v => v.trim());
+
+					return cardValues.some(cardValue => values.has(cardValue));
+				});
+
+				const matchesSearch =
+					search === '' ||
+					(card.dataset.name || '').includes(search);
+
+				card.style.display = (isMatch && matchesSearch) ? '' : 'none';
+			});
+
+		}
+
+		checkboxes.forEach(cb =>
+			cb.addEventListener('change', applyFilters)
+		);
+		if (searchInput) {
+			searchInput.addEventListener('input', applyFilters);
+		}
+	}
 });
 
-// --- 2. Rejestracja komponentu Audio dla Alpine ---
+// --- 2. Audio Player ---
 Alpine.data('audioPlayer', (audioSrc) => ({
-    isPlaying: false,
-    progress: 0,
-    audioSrc: audioSrc,
+	isPlaying: false,
+	progress: 0,
+	audioSrc,
 
-    init() {
-        const audio = this.$refs.audio;
-        if (!audio) return;
+	init() {
+		const audio = this.$refs.audio;
 
-        // Liczenie czasu i postępu dla kołowego paska
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                this.progress = (audio.currentTime / audio.duration) * 100;
-            }
-        });
+		if (!audio) return;
 
-        // Reset przycisku i paska po zakończeniu utworu
-        audio.addEventListener('ended', () => {
-            this.isPlaying = false;
-            this.progress = 0;
-            audio.currentTime = 0;
-        });
+		audio.addEventListener('play', () => {
+			this.isPlaying = true;
+		});
 
-        // Nasłuchiwanie zmian stanu (zatrzymywanie innych odtwarzaczy)
-        this.$watch('isPlaying', (playing) => {
-            if (playing) {
-                window.dispatchEvent(new CustomEvent('player-started', { detail: { player: this } }));
-            }
-        });
-    },
+		audio.addEventListener('pause', () => {
+			this.isPlaying = false;
+		});
 
-    togglePlay() {
-        const audio = this.$refs.audio;
-        if (!audio) return;
+		audio.addEventListener('timeupdate', () => {
+			if (audio.duration) {
+				this.progress = (audio.currentTime / audio.duration) * 100;
+			}
+		});
 
-        if (audio.paused) {
-            audio.play().catch(error => {
-                console.error("Autoplay zablokowany:", error);
-            });
-            this.isPlaying = true;
-        } else {
-            audio.pause();
-            this.isPlaying = false;
-        }
-    },
+		audio.addEventListener('ended', () => {
+			this.progress = 0;
+			audio.currentTime = 0;
+			this.isPlaying = false;
+		});
 
-    // Globalny listener zatrzymujący inne odtwarzacze
-    '@player-started.window'(event) {
-        if (event.detail.player !== this) {
-            this.$refs.audio.pause();
-            this.isPlaying = false;
-        }
-    }
+		window.addEventListener('player-started', (event) => {
+			if (event.detail.player !== this) {
+				audio.pause();
+				audio.currentTime = 0;
+				this.progress = 0;
+			}
+		});
+	},
+
+	togglePlay() {
+		const audio = this.$refs.audio;
+
+		if (!audio) return;
+
+		if (audio.paused) {
+			// zatrzymaj wszystkie pozostałe playery
+			window.dispatchEvent(
+				new CustomEvent('player-started', {
+					detail: { player: this }
+				})
+			);
+
+			audio.play().catch(error => {
+				console.error('Błąd odtwarzania:', error);
+			});
+		} else {
+			audio.pause();
+		}
+	}
 }));

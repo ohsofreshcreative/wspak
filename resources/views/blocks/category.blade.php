@@ -29,19 +29,29 @@
 					$image_url = $thumbnail_id ? wp_get_attachment_image_url($thumbnail_id, 'large') : null;
 					$icon_id = get_field('offer_icon', $post->ID);
 					@endphp
-					<div data-gsap-element="card" class="swiper-slide group relative bg-white p-6 radius flex flex-col w-full min-h-[500px] md:min-h-[600px] transform transition-all duration-300 transition-opacity delay-75 overflow-hidden"
-						style="@if($image_url) background-image: url('{!! $image_url !!}'); background-size: cover; background-position: center; @endif">
+					<div data-gsap-element="card" class="swiper-slide group relative bg-white radius overflow-hidden min-h-[400px] md:min-h-[500px] transform transition-all duration-300">
+
+						@if($image_url)
+						<div
+							class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
+							style="background-image: url('{!! $image_url !!}');">
+						</div>
+						@endif
+
 						<div class="absolute inset-0 bg-vertical opacity-50 z-10"></div>
+
 						@if(!empty($icon_id))
-						<div class="w-full h-auto flex justify-end relative z-20 mb-6 ml-auto">
+						<div class="w-full h-auto flex justify-end relative z-20 p-6 mb-6">
 							{!! wp_get_attachment_image($icon_id, 'thumbnail', false, ['class' => 'w-10 h-auto object-contain ml-auto text-right']) !!}
 						</div>
 						@endif
-						<div class="relative z-20 flex flex-col flex-1 h-full w-full">
+
+						<div class="relative z-20 flex flex-col flex-1 h-full w-full p-6">
 							<div>
-								<h5 class=" text-white m-title">
+								<h5 class="text-white m-title">
 									{{ get_the_title($post->ID) }}
 								</h5>
+
 								@if($show_excerpt)
 								<div class="text-white text-lg">
 									{!! get_the_excerpt($post->ID) !!}
@@ -49,11 +59,13 @@
 								@endif
 							</div>
 						</div>
+
 						<div class="absolute bottom-4 right-4 z-20">
 							<x-icon.arrow-right class="text-right block text-white transform group-hover:translate-x-1 transition-transform" />
 						</div>
-						<a href="{{ get_permalink($post->ID) }}" class="absolute inset-0 z-30 hidden-link" aria-label="{{ get_the_title($post->ID) }}">
-						</a>
+
+						<a href="{{ get_permalink($post->ID) }}" class="absolute inset-0 z-30 hidden-link" aria-label="{{ get_the_title($post->ID) }}"></a>
+
 					</div>
 					@endforeach
 				</div>

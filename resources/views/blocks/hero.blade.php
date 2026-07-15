@@ -63,3 +63,49 @@
 		</div>
 	</div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.text-carousel-slider').forEach((slider) => {
+        const items = slider.querySelectorAll('.text-carousel-item');
+
+        if (!items.length) return;
+
+        let index = 0;
+        let itemHeight = getItemHeight();
+
+        function getItemHeight() {
+            return items[0].getBoundingClientRect().height;
+        }
+
+        function updateHeight() {
+            itemHeight = getItemHeight();
+            slider.style.transition = 'none';
+            slider.style.transform = `translateY(-${index * itemHeight}px)`;
+        }
+
+        window.addEventListener('resize', updateHeight);
+
+        if (document.fonts) {
+            document.fonts.ready.then(updateHeight);
+        }
+
+        setInterval(() => {
+            itemHeight = getItemHeight();
+
+            index++;
+
+            slider.style.transition = 'transform .7s cubic-bezier(.76,0,.24,1)';
+            slider.style.transform = `translateY(-${index * itemHeight}px)`;
+
+            if (index === items.length - 1) {
+                setTimeout(() => {
+                    slider.style.transition = 'none';
+                    index = 0;
+                    slider.style.transform = 'translateY(0)';
+                }, 700);
+            }
+        }, 3500);
+    });
+});
+</script>

@@ -21,7 +21,7 @@
 		<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 
 			{{-- SEKCJA FILTRÓW (PO LEWEJ STRONIE) --}}
-			<div class="voices-section col-span-1 mb-8 md:mb-0">
+			<div data-gsap-element="card" class="voices-section col-span-1 mb-8 md:mb-0">
 				@php
 				$filterLabels = [
 				'gender' => 'Płeć',
@@ -31,7 +31,14 @@
 				'style' => 'Styl interpretacji',
 				];
 				@endphp
-				<div data-gsap-element="card" class="voices-filters flex flex-col gap-6">
+				<div class="mb-6">
+				<p class="pb-2 !font-semibold">Wyszukaj lektora</p>
+					<input
+						type="text"
+						id="voice-search"
+						class="w-full border !border-primary rounded-lg px-4 py-2">
+				</div>
+				<div class="voices-filters flex flex-col gap-6">
 					@foreach ($filterLabels as $key => $label)
 					@if (!empty($filters[$key]))
 					<div class="filter-group border-b border-secondary pb-4" data-filter-group="{{ $key }}">
@@ -58,12 +65,13 @@
 			<div data-gsap-element="grid-layout" class="col-span-1 md:col-span-3 flex flex-col gap-10">
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start ">
 					@foreach ($voices as $voice)
-					<div data-gsap-element="card" class="voice-card p-4 bg-white radius"
+					<div class="voice-card p-4 bg-white radius"
 						data-gender="{{ Str::slug($voice['gender'] ?? '') }}"
 						data-age="{{ Str::slug($voice['age'] ?? '') }}"
 						data-timbre="{{ Str::slug($voice['timbre'] ?? '') }}"
 						data-price="{{ Str::slug($voice['price'] ?? '') }}"
-						data-style="{{ Str::slug($voice['style'] ?? '') }}">
+						data-style="{{ Str::slug($voice['style'] ?? '') }}"
+						data-name="{{ Str::lower($voice['name'] ?? '') }}">
 
 						{{-- Górna sekcja --}}
 						<div class="flex justify-between items-start">
@@ -72,7 +80,8 @@
 									@php
 									$count = (($voice['price'] ?? '') == 'premium') ? 3 : ((($voice['price'] ?? '') == 'ekonomiczna') ? 2 : 1);
 									@endphp
-									@for ($i = 0; $i < $count; $i++)
+									@for ($i = 0; $i
+									< $count; $i++)
 										<x-icon.price-icon class="w-2 h-auto flex-shrink-0" />
 									@endfor
 								</div>
@@ -150,7 +159,7 @@
 										</svg>
 
 										<svg x-show="isPlaying" x-cloak class="w-6 h-6" viewBox="0 0 24 24">
-											<path d="M6 19h4V5H6zm8-14v14h4V5z"  fill="white" />
+											<path d="M6 19h4V5H6zm8-14v14h4V5z" fill="white" />
 										</svg>
 									</button>
 								</div>
@@ -185,21 +194,22 @@
 
 					{{-- NUMERY --}}
 					@for($i = 1; $i <= $voices_pages; $i++)
-					<a href="?vp={{ $i }}"
-						class="px-4 py-2 rounded-lg border !text-primary-900 {{ ($voices_page ?? 1) == $i ? 'border-primary-900' : 'border-primary-100' }}">
+						<a
+						href="?vp={{ $i }}"
+						class="px-4 py-2 rounded-lg !text-primary-900 transition-opacity hover:opacity-40 {{ ($voices_page ?? 1) == $i ? 'border-2 border-primary-900' : 'border border-primary-100' }}">
 						{{ $i }}
-					</a>
-					@endfor
+						</a>
+						@endfor
 
-					{{-- NEXT --}}
-					@if(($voices_page ?? 1) < $voices_pages)
-					<a href="?vp={{ $voices_page + 1 }}"
-						class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white hover:opacity-80 transition-opacity">
-						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-							<path d="M9.12868 6.58362L5.37373e-06 6.58362L0 5.08363L9.12868 5.08363L5.10571 1.06066L6.16638 0L12 5.83362L6.16637 11.6673L5.1057 10.6066L9.12868 6.58362Z" fill="white" />
-						</svg>
-					</a>
-					@endif
+						{{-- NEXT --}}
+						@if(($voices_page ?? 1) < $voices_pages)
+							<a href="?vp={{ $voices_page + 1 }}"
+							class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white hover:opacity-80 transition-opacity">
+							<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+								<path d="M9.12868 6.58362L5.37373e-06 6.58362L0 5.08363L9.12868 5.08363L5.10571 1.06066L6.16638 0L12 5.83362L6.16637 11.6673L5.1057 10.6066L9.12868 6.58362Z" fill="white" />
+							</svg>
+							</a>
+							@endif
 				</div>
 				@endif
 			</div>

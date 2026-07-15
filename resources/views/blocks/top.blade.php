@@ -10,7 +10,7 @@
 	])>
 	<div class="absolute z-4 left_shape "><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
 	<div class="absolute z-4 right_shape "><img class="" src="{{ get_template_directory_uri() }}/resources/images/shape.svg"></div>
-	<div class="__wrapper c-main relative">
+	<div class="__wrapper c-main relative z-5">
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-20">
 			@if (!empty($g_top['image']))
 			<div data-gsap-element="img" class="__img h-full order1">

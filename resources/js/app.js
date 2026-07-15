@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (document.querySelector('.b-slider')) import('./blocks/slider');
 	if (document.querySelector('.b-category')) import('./blocks/category');
 	if (document.querySelector('.b-partners')) import('./blocks/partners');
+	if (document.querySelector('.b-logos')) import('./blocks/logos');
 	
 
 });

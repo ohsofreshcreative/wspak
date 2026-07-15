@@ -53,7 +53,15 @@ class Community extends Block
 				'toolbar' => 'full',
 				'media_upload' => true,
 			])
-		
+				->addLink('button1', [
+				'label' => 'Przycisk #1',
+				'return_format' => 'array',
+			])
+			->addLink('button2', [
+				'label' => 'Przycisk #2',
+				'return_format' => 'array',
+			])
+			
 			->endGroup()
 
 			/*--- USTAWIENIA BLOKU ---*/
