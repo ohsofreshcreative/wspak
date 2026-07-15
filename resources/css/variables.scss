@@ -89,12 +89,6 @@ body {
 	color: rgb(var(--p-900));
 }
 
-@layer base {
-	html {
-		font-size: clamp(14px, 0.78vw, 20px);
-	}
-}
-
 /*--- !ROOT ---*/
 
 :root {
