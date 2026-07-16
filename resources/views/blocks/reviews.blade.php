@@ -17,10 +17,10 @@
 
 	<div class="__wrapper c-main">
 		<div class="__content">
-			<div data-gsap-element="header" class="__wrapper block w-full  pb-10">
-				<h2 class="text-center text-secondary!">{{ $g_reviews['title']}}</h2>
+			<div data-gsap-element="header" class="__wrapper relative block w-full z-20 pb-10">
+				<h2 class="text-center !text-secondary">{{ $g_reviews['title']}}</h2>
 			</div>
-			<div class="relative">
+			<div class="relative pt-16 md:pt-10">
 				<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 pointer-events-none">
 					<button class="__prev absolute left-2 top-1/2 -translate-y-1/2 pointer-events-auto hover:opacity-80 transition-opacity duration-300">
 						<x-icon.arrow-left class="h-10 w-auto" />
@@ -29,19 +29,19 @@
 						<x-icon.arrow-right class="h-10 w-auto" />
 					</button>
 				</div>
-				<div data-gsap-element="swiper" class="swiper reviews-swiper overflow-visible!">
+				<div data-gsap-element="swiper" class="swiper reviews-swiper !overflow-visible">
 					<div class="swiper-wrapper flex">
 						@foreach($r_reviews as $card)
-						<div class="swiper-slide w-full! md:w-[calc(100%/1.5)]! max-w-[calc(100%/1.5)]! md:px-14!">
+						<div class="swiper-slide !w-full md:!w-[calc(100%/1.5)] md:!max-w-[calc(100%/1.5)] !px-5 md:!px-14">
 							<div data-gsap-element="card" class="__card relative  md:py-14">
-								<div class="relative z-10 flex flex-col ">
+								<div class="relative text-white flex flex-col z-10 px-10">
 									@if(!empty($card['txt']))
-									<div class="review-content-wrapper text-white">
-										<img class="mix-blend-overlay" src="{{ get_template_directory_uri() }}/resources/images/quote.svg" />
-										<div class="__txt text-h4 -mt-10  mb-9 font-normal!">{!! $card['txt'] !!}</div>
+									<img class="absolute -top-20 -left-2" src="{{ get_template_directory_uri() }}/resources/images/quote.svg" />
+									<div class="__content relative z-10">
+										<p class="__txt block text-xl md:text-2xl !mb-9">{!! $card['txt'] !!}</p>
+										<b class="font-header  md:text-xl">{{ $card['name'] }}</b>
+										<b class="font-header  md:text-xl">{{ $card['text'] }}</b>
 									</div>
-									<b class="font-header text-xl text-white! font-semibold!">{{ $card['name'] }}</b>
-									<b class="font-header text-xl text-white!">{{ $card['text'] }}</b>
 									@endif
 								</div>
 							</div>
@@ -49,4 +49,7 @@
 						@endforeach
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
 </section>

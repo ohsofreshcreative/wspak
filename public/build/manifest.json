@@ -44,7 +44,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CSyAaoTO.css",
+    "file": "assets/app-DKFECDv1.css",
     "name": "app",
     "names": [
       "app.css"
@@ -59,7 +59,7 @@
     ]
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-DInQCuT8.css",
+    "file": "assets/editor-DJI9NaCU.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -84,7 +84,7 @@
     "src": "resources/images/vector.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-DFt1xVxL.js",
+    "file": "assets/app-BKSq7EP9.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -134,7 +134,7 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/reviews.js": {
-    "file": "assets/reviews-DGw3kofE.js",
+    "file": "assets/reviews-Dg1qp8El.js",
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
