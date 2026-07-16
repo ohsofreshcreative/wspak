@@ -58,7 +58,7 @@
 							@endif
 						</div>
 					</div>
-					<div class="grow ml-30 p-8 border border-primary-100 radius flex flex-col justify-center min-h-[218px] ">
+					<div class="grow ml-20 md:ml-30 p-8 border border-primary-100 radius flex flex-col justify-center min-h-[218px] ">
 						@if(!empty($card['card_text_top']))
 						<span class="text-h7 font-bold text-secondary uppercase mb-8">
 							{{ $card['card_text_top'] }}

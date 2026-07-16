@@ -39,8 +39,8 @@
 									<img class="absolute -top-20 -left-2" src="{{ get_template_directory_uri() }}/resources/images/quote.svg" />
 									<div class="__content relative z-10">
 										<p class="__txt block text-xl md:text-2xl !mb-9">{!! $card['txt'] !!}</p>
-										<b class="font-header  md:text-xl">{{ $card['name'] }}</b>
-										<b class="font-header  md:text-xl">{{ $card['text'] }}</b>
+										<b class="block text-base md:text-xl">{{ $card['name'] }}</b>
+										<p class="block text-base md:text-xl">{{ $card['text'] }}</p>
 									</div>
 									@endif
 								</div>
