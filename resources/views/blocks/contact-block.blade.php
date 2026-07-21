@@ -30,15 +30,7 @@
 				@if(!empty($g_contact_1['mail']))
 				<a data-gsap-element="txt" class="__mail flex items-center" href="mailto:{{ $g_contact_1['mail'] }}">{{ $g_contact_1['mail'] }}</a>
 				@endif
-				@if(!is_front_page())
-				<x-button
-					href="#lokalizacje"
-					variant="secondary"
-					class="mt-6"
-					data-gsap-element="btn">
-					Sprawdź lokalizacje
-				</x-button>
-				@endif
+		
 			</div>
 			<div data-gsap-element="form" class="bg-custom-blue radius p-8 md:p-10 z-20 relative">
 				@if(!empty($g_contact_2['title']))
