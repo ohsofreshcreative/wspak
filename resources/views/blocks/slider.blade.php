@@ -35,11 +35,11 @@ $sectionClass .= ' ' . $background;
 				<x-icon.arrow-right class="cursor-pointer h-10 w-auto" />
 			</button>
 		</div>
-		<div class="swiper slider-standard mx-12 lg:mx-20">
+		<div class="swiper slider-standard mx-12 lg:mx-18">
 			<div class="swiper-wrapper">
 				@foreach($slider as $slide)
 				<div class="swiper-slide w-full">
-					<div class="grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-14 items-center min-h-[450px]">
+					<div class="grid grid-cols-1 lg:grid-cols-2  md:gap-6 gap-14 items-center min-h-[450px]">
 						<div class="flex flex-col order-2 lg:order-1">
 							@if(!empty($slide['header']))
 							<h3 class="text-white m-title">
@@ -52,9 +52,9 @@ $sectionClass .= ' ' . $background;
 							</div>
 							@endif
 						</div>
-						<div class="w-full aspect-[4/3] md:aspect-square order-1 lg:order-2">
+						<div class="w-full max-h-100 xl:max-h-110  md:aspect-square order-1 lg:order-2">
 							@if(!empty($slide['image']))
-							<img src="{{ $slide['image']['url'] }}" alt="{{ $slide['header'] ?? '' }}" class="w-full h-full object-cover radius">
+							<img src="{{ $slide['image']['url'] }}" alt="{{ $slide['header'] ?? '' }}" class="w-full h-full object-cover radius max-h-100 xl:max-h-110">
 							@endif
 						</div>
 					</div>

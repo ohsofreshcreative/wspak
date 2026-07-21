@@ -21,7 +21,7 @@
 		<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 
 			{{-- SEKCJA FILTRÓW (PO LEWEJ STRONIE) --}}
-			<div data-gsap-element="card" class="voices-section col-span-1 mb-8 md:mb-0">
+			<div data-gsap-element="card" class="voices-section col-span-1 md:mb-8 md:mb-0 flex flex-col" x-data="{ isOpen: false }">
 				@php
 				$filterLabels = [
 				'gender' => 'Płeć',
@@ -31,15 +31,25 @@
 				'style' => 'Styl interpretacji',
 				];
 				@endphp
-				<div class=" mb-6">
-					<p class="pb-2 !font-semibold">Wyszukaj lektora</p>
-					<input
-						type="text"
-						id="voice-search"
-						placeholder="Wpisz imię i/lub nazwisko"
-						class="w-full border bg-white !border-secondary/50 rounded-lg px-4 py-2">
+
+				{{-- filtry - mobile --}}
+				<div class="flex md:hidden flex-col mb-4">
+					<p class="pb-2 font-semibold!">Wyszukaj filtr</p>
+					<button 
+						@click="isOpen = !isOpen" 
+						class="w-full flex items-center justify-between text-left border-2 bg-white border-secondary/50! rounded-lg px-4 py-3 text-gray-400 font-medium"
+						type="button">
+						<span>Rozwiń filtry</span>
+						<svg :class="isOpen ? 'rotate-180' : ''" class="transition-transform duration-300 w-3 h-3 text-secondary shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+						</svg>
+					</button>
 				</div>
-				<div class="voices-filters flex flex-col gap-6">
+
+				{{-- WRAPPER FILTRÓW (ZWIJANY NA MOBILCE) --}}
+				<div 
+					class="voices-filters flex flex-col gap-6 order-1 md:order-2"
+					:class="isOpen ? 'flex' : 'hidden md:flex'">
 					@foreach ($filterLabels as $key => $label)
 					@if (!empty($filters[$key]))
 					<div class="bg-white p-4 radius filter-group border-b border-secondary mb-4" data-filter-group="{{ $key }}">
@@ -59,6 +69,16 @@
 					</div>
 					@endif
 					@endforeach
+				</div>
+
+				{{-- WYSZUKAJ LEKTORA --}}
+				<div class="mb-4 order-2 md:order-1 mt-2 md:mt-0">
+					<p class="pb-2 !font-semibold">Wyszukaj lektora</p>
+					<input
+						type="text"
+						id="voice-search"
+						placeholder="Wpisz imię i/lub nazwisko"
+						class="w-full border bg-white !border-secondary/50 rounded-lg px-4 py-2">
 				</div>
 			</div>
 

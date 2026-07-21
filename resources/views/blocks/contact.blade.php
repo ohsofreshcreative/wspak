@@ -12,7 +12,7 @@
 	<div class="absolute right_shape z-10 mix-blend-overlay w-[890px] h-[890px] lg:w-[990px] lg:h-[990px] lg:right-4 -right-30 -bottom-40 lg:bottom-auto lg:top-18 -rotate-[25deg]">
 		<img class="w-full h-full" src="{{ get_template_directory_uri() }}/resources/images/shape_s.svg">
 	</div>
-	<div class="__wrapper c-main  z-2">
+	<div class="__wrapper c-main  z-10 relative">
 		<div class=" grid grid-cols-1 lg:grid-cols-2 items-center gap-10 z-10">
 			<div class="__content flex flex-col justify-between">
 				@if(!empty($g_contact_1['header']))

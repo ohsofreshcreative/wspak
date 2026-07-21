@@ -8,7 +8,7 @@
 	$section_class => filled($section_class),
 	$background => filled($background) && $background !== 'none',
 	])>
-	<div class="c-main grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-12 items-end ">
+	<div class="c-main grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-end ">
 		<div class="flex flex-col order-2 lg:order-none">
 			@if(!empty($g_overview['title_sub']))
 			<span data-gsap-element="header" class="__title block m-title">
@@ -28,8 +28,8 @@
 			<img
 				data-gsap-element="img"
 				src="{{ $g_overview['image_logo']['url'] }}"
-				alt="{{ $g_overview['image']['alt'] }}"
-				class="w-full max-w-[200px] md:max-w-[266px] h-auto object-contain shrink-0" />
+				alt="{{ $g_overview['image_logo']['alt'] }}"
+				class="w-full max-w-[120px] lg:max-w-[266px] h-auto object-contain shrink-0" />
 		</div>
 	</div>
 	@if (!empty($g_overview['image']))

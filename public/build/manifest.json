@@ -17,8 +17,8 @@
     "file": "assets/pagination-CPGgqmn-.js",
     "name": "pagination",
     "imports": [
-      "_swiper-BB-60MJI.js",
-      "_navigation-C3-OjK5I.js"
+      "_navigation-C3-OjK5I.js",
+      "_swiper-BB-60MJI.js"
     ],
     "css": [
       "assets/pagination-ZQCciRw_.css"
@@ -44,7 +44,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BIUs-2W0.css",
+    "file": "assets/app-CGvk4o3H.css",
     "name": "app",
     "names": [
       "app.css"
@@ -59,7 +59,7 @@
     ]
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-cWk6LIzI.css",
+    "file": "assets/editor-Bbax7Xef.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -84,7 +84,7 @@
     "src": "resources/images/vector.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-BKSq7EP9.js",
+    "file": "assets/app-Df_upLIm.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -104,13 +104,13 @@
     "src": "resources/js/blocks/category.js",
     "isDynamicEntry": true,
     "imports": [
-      "_swiper-BB-60MJI.js",
       "_navigation-C3-OjK5I.js",
-      "_pagination-CPGgqmn-.js"
+      "_pagination-CPGgqmn-.js",
+      "_swiper-BB-60MJI.js"
     ]
   },
   "resources/js/blocks/logos.js": {
-    "file": "assets/logos-lQpD5otL.js",
+    "file": "assets/logos-hYwWuLmP.js",
     "name": "logos",
     "src": "resources/js/blocks/logos.js",
     "isDynamicEntry": true
@@ -139,9 +139,9 @@
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
     "imports": [
-      "_swiper-BB-60MJI.js",
       "_navigation-C3-OjK5I.js",
-      "_pagination-CPGgqmn-.js"
+      "_pagination-CPGgqmn-.js",
+      "_swiper-BB-60MJI.js"
     ]
   },
   "resources/js/blocks/slider.js": {
@@ -150,12 +150,12 @@
     "src": "resources/js/blocks/slider.js",
     "isDynamicEntry": true,
     "imports": [
-      "_swiper-BB-60MJI.js",
-      "_navigation-C3-OjK5I.js"
+      "_navigation-C3-OjK5I.js",
+      "_swiper-BB-60MJI.js"
     ]
   },
   "resources/js/blocks/tabs.js": {
-    "file": "assets/tabs-DHLaxzBo.js",
+    "file": "assets/tabs-BG6BwhKi.js",
     "name": "tabs",
     "src": "resources/js/blocks/tabs.js",
     "isDynamicEntry": true

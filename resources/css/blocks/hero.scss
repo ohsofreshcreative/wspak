@@ -4,9 +4,17 @@
 		height: 1060px;
 		left: -700px;
 		top: 80px;
+		@media (max-width: 1536px) {
+			left: -770px;
+		}
 		@media (max-width: 640px) {
 			height: 700px;
-			left: -750px;
+			left: -770px;
+		}
+		@media (max-width: 480px) {
+			height: 500px;
+			left: -840px;
+			top: 0;
 		}
 	}
 
@@ -15,9 +23,17 @@
 		height: 1060px;
 		right: -700px;
 		top: 80px;
+		@media (max-width: 1536px) {
+			right: -770px;
+		}
 			@media (max-width: 640px) {
 			height: 700px;
-			right: -800px;
+			right: -820px;
+		}
+		@media (max-width: 480px) {
+			height: 500px;
+			right: -900px;
+			top: 0;
 		}
 	}
 

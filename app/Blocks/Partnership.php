@@ -59,15 +59,7 @@ class Partnership extends Block
                 'toolbar' => 'full',
                 'media_upload' => true,
             ])
-            ->addLink('button', [
-                'label' => 'Przycisk',
-                'return_format' => 'array',
-            ])
-            ->addImage('bg', [
-                'label' => 'Obraz w tle',
-                'return_format' => 'array',
-                'preview_size' => 'medium',
-            ])
+
             ->endGroup()
 
             ->addTab('Kafelki', ['placement' => 'top'])

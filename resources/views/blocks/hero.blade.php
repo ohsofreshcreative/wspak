@@ -44,7 +44,7 @@
 </div>
 <section data-gsap-anim="section" class="bg-bg relative z-10 py-20 md:py-40">
 	<div class="c-main grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-12 items-center">
-		<div class="lg:col-span-9 flex flex-col text-left order-2 lg:order-none">
+		<div class="lg:col-span-9 flex flex-col text-left ">
 			@if(!empty($g_hero['title_sub']))
 			<span data-gsap-element="txt" class="__title m-title">
 				{{ $g_hero['title_sub'] }}
@@ -54,12 +54,12 @@
 				{!! $g_hero['text'] !!}
 			</div>
 		</div>
-		<div class="lg:col-span-3 flex justify-end w-full shrink-0 order-1 lg:order-none">
+		<div class="lg:col-span-3 flex justify-end w-full shrink-0 mt-4 md:mt-0">
 			<img
 				data-gsap-element="img"
 				src="{{ $g_hero['image']['url'] }}"
 				alt="{{ $g_hero['image']['alt'] }}"
-				class="w-full max-w-[266px] h-auto object-contain shrink-0" />
+				class="w-full max-w-[180px] md:max-w-[266px] h-auto object-contain shrink-0" />
 		</div>
 	</div>
 </section>

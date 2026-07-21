@@ -38,11 +38,9 @@
 
 			<!-- prawa strona  -->
 			<div class=" w-full z-10 relative flex flex-col gap-0 __timeline-container">
-				<!-- Tło szyny linii (widoczne zawsze) -->
 				<div class="__timeline-track absolute left-0 w-12 flex justify-center pointer-events-none" style="top: 30px; height: calc(100% - 60px);">
 					<div class="w-px bg-secondary/20 h-full"></div>
 				</div>
-				<!-- Rysująca się linia postępu -->
 				<div class="__timeline-progress-track absolute left-0 w-12 flex justify-center pointer-events-none" style="top: 30px; height: calc(100% - 60px);">
 					<div class="__timeline-progress-bar w-[1.5px] bg-secondary h-full origin-top scale-y-0"></div>
 				</div>
@@ -51,16 +49,15 @@
 				@foreach($r_partnership as $index => $card)
 				<div data-gsap-element="stagger" class="__timeline-row flex gap-6 md:gap-8 items-start relative pb-8 last:pb-0">
 					<div class="flex flex-col items-center h-full absolute top-0 bottom-0 left-0 w-12">
-						<div class="__timeline-circle w-15 h-15 rounded-full flex items-center justify-center p-2 relative z-10 shrink-0 border transition-all duration-300
-    {{ $loop->first ? 'bg-secondary border-secondary text-white is-active' : 'bg-white border-secondary text-secondary' }}">
+						<div class="__timeline-circle md:w-15 md:h-15 w-12 h-12 rounded-full flex items-center justify-center p-2 relative z-10 shrink-0 border transition-all duration-300 border-secondary">
 							@if(!empty($card['card_image']))
-							<img src="{{ $card['card_image']['url'] }}" alt="ikona" class="__img w-7 h-7 object-contain">
+							<img src="{{ $card['card_image']['url'] }}" alt="ikona" class="__img md:w-7 md:h-7 w-5 h-5 object-contain">
 							@endif
 						</div>
 					</div>
-					<div class="grow ml-20 md:ml-30 p-8 border border-primary-100 radius flex flex-col justify-center min-h-[218px] ">
+					<div class="grow ml-16 md:ml-30 md:p-8 p-6 border border-primary-100 radius flex flex-col justify-center min-h-[218px] ">
 						@if(!empty($card['card_text_top']))
-						<span class="text-h7 font-bold text-secondary uppercase mb-8">
+						<span class="text-h7 font-bold text-secondary uppercase md:mb-8 mb-4">
 							{{ $card['card_text_top'] }}
 						</span>
 						@endif

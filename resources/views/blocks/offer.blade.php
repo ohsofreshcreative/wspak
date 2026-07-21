@@ -45,7 +45,7 @@
 						</div>
 					</div>
 					<!-- Zdjęcie z prawej -->
-					<div class="radius overflow-hidden relative h-105 lg:h-full lg:max-h-91.5">
+					<div class="hidden lg:block radius overflow-hidden relative h-105 lg:h-full lg:max-h-91.5">
 						@if($image_url)
 						<img
 							src="{{ $image_url }}"

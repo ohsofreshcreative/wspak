@@ -82,11 +82,12 @@
 							</div>
 						</div>
 						<div class="flex justify-between items-center">
-							<button
-								type="button"
+							<a
+								href="/bank-glosow/"
 								class="btn btn-secondary !px-4 !py-2 !text-sm">
 								Wybierz głos
-							</button>
+							</a>
+
 							{{-- Sekcja z próbkami audio --}}
 							<div class="">
 								@if(!empty($voice['audio_tracks']))

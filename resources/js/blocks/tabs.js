@@ -83,3 +83,28 @@ document.querySelectorAll('section.b-tabs').forEach(function (root) {
     });
   });
 });
+
+document.querySelectorAll('.b-tabs [data-gsap-element="gallery"]').forEach((gallery) => {
+    let startX = 0;
+    let endX = 0;
+
+    gallery.addEventListener('touchstart', (e) => {
+        startX = e.changedTouches[0].clientX;
+    }, { passive: true });
+
+    gallery.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+
+        const diff = startX - endX;
+
+        if (Math.abs(diff) < 50) return;
+
+        if (diff > 0) {
+            // swipe w lewo -> następne
+            gallery.querySelector('.__next')?.click();
+        } else {
+            // swipe w prawo -> poprzednie
+            gallery.querySelector('.__prev')?.click();
+        }
+    }, { passive: true });
+});
