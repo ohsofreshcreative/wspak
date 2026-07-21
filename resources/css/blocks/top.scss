@@ -5,10 +5,10 @@
 		left: -700px;
 		top: 80px;
 
-		@media (max-width: 1200px) {
+		@media (max-width: 1536px) {
 			width: 800px;
 			height: 850px;
-			left: -600px;
+			left: -580px;
 		}
 
 		@media (max-width: 748px) {
@@ -19,19 +19,17 @@
 			left: -700px;
 		}
 	}
-
 	.right_shape {
 		width: 1000px;
 		height: 1060px;
 		right: -700px;
 		top: 80px;
 
-		@media (max-width: 1200px) {
+		@media (max-width: 1536px) {
 			width: 800px;
 			height: 850px;
 			right: -600px;
 		}
-
 		@media (max-width: 748px) {
 			right: -650px;
 		}

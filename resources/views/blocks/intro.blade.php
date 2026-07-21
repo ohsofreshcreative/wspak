@@ -9,10 +9,10 @@
 	$background => filled($background) && $background !== 'none',
 	])>
 	<div class="__wrapper c-main relative ">
-		<div class="__col grid grid-cols-1 xl:grid-cols-2 items-center md:mb-12 mb-8">
-			<div class="flex md:gap-14 gap-6">
+		<div class="__col grid grid-cols-1 xl:grid-cols-2 items-center md:mb-12 mb-8 gap-4">
+			<div class="flex md:gap-10 gap-6">
 				@if (!empty($g_intro['icon']))
-				<div data-gsap-element="img" class="__img h-full order1">
+				<div data-gsap-element="img" class="__img h-full ">
 					<img class=" shrink-0 h-10 w-10" src="{{ $g_intro['icon']['url'] }}" alt="{{ $g_intro['icon']['alt'] ?? '' }}">
 				</div>
 				@endif
