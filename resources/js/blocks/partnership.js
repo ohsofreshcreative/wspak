@@ -1,7 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = document.querySelectorAll('.b-partnership');
-  if (!sections.length) return;
-
+const sections = document.querySelectorAll('.b-partnership');
+if (sections.length > 0) {
   sections.forEach((section) => {
     const container = section.querySelector('.__timeline-container');
     const rows = section.querySelectorAll('.__timeline-row');
@@ -50,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     // Animacja zapalania się kółek w miarę przejeżdżania linii
-    rows.forEach((row, idx) => {
+    rows.forEach((row) => {
       const circle = row.querySelector('.__timeline-circle');
       if (!circle) return;
 
@@ -61,12 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
           circle.classList.add('is-active');
         },
         onLeaveBack: () => {
-          // Zachowujemy aktywne pierwsze kółko jako domyślne, pozostałe gasimy
-          if (idx !== 0) {
-            circle.classList.remove('is-active');
-          }
+          circle.classList.remove('is-active');
         },
       });
     });
   });
-});
+}

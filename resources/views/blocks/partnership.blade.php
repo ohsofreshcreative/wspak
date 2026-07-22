@@ -13,7 +13,7 @@
 			<div class="__content py-0 lg:sticky lg:top-36 flex flex-col-reverse lg:flex-col justify-center">
 				<div class="">
 					@if (!empty($g_partnership['title']))
-					<span data-gsap-element="header" class="text-lg uppercase text-secondary ">
+					<span data-gsap-element="header" class="__title m-title">
 						{{ $g_partnership['title'] }}
 					</span>
 					@endif

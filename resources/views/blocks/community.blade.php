@@ -15,7 +15,7 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 		<div class="__inside c-main relative">
 			<div class="__content c-main text-center">
 				@if(!empty($g_community['title_sub']))
-				<span class="block text-sm md:text-base text-secondary-500 m-title">
+				<span class="__title m-title">
 					{{ $g_community['title_sub'] }}
 				</span>
 				@endif
